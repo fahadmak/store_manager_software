@@ -75,6 +75,7 @@ function pdel() {
 
     }
 }
+
 var modifier = document.getElementById('modifier');
 function pmod() {
     var div = document.getElementsByClassName('mod');
