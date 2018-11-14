@@ -155,48 +155,6 @@
     <script src="../js/mobile.js"></script>
     <script src="../js/search.js"></script>
     <script>
-        var modifier = document.getElementById('modifier');
-        var div = document.getElementsByClassName('mod');
-        var i;
-        for(i = 0; i < div.length; i++){
-            div[i].onclick = function () {
-                console.log(this.parentNode.parentNode.id);
-                var ul = document.getElementById(this.parentNode.parentNode.id);
-                console.log(ul);
-                var kids = ul.children;
-                console.log(kids[0]);
-                document.getElementById('qb').innerText = kids[0].innerHTML;
-                document.getElementById('pname').value = kids[1].innerHTML;
-                document.getElementById('pprice').value = kids[2].innerHTML;
-                document.getElementById('pquantity').value = kids[3].innerHTML;
-                modifier.style.display = "block";
-            }
-
-        }
-        function edit() {
-            for (var li of document.querySelectorAll('li')){
-                if (document.getElementById('qb').innerText === li.innerText){
-                    var ul = document.getElementById(li.parentNode.id);
-                    ul.children[1].innerHTML = document.getElementById('pname').value;
-                    ul.children[2].innerHTML = document.getElementById('pprice').value;
-                    ul.children[3].innerHTML =  document.getElementById('pquantity').value;
-                    modifier.style.display = "none";
-                }
-            }
-        }
-        var del = document.getElementsByClassName('del');
-        var x;
-        for(i = 0; i < del.length; i++){
-            del[i].onclick = function () {
-                if(confirm('Are You Want To Delete?')){
-                    let name = this.parentNode.parentNode.children[1].innerHTML;
-                    this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
-                    alert('You have succesfully deleted ' + name);
-                }
-            }
-
-        }
-
         var span = document.getElementById('exit');
         span.onclick = function () {
             modifier.style.display = 'none';
