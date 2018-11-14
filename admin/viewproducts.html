@@ -6,7 +6,7 @@
     <link rel="stylesheet" href=../css/style.css>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body onload="allproducts()">
     <div class="wrapper">
         <div class="row" id="niv">
             <div class="col-12">
@@ -16,11 +16,11 @@
                     <span class="nav-toggle" id="js-toggle">
                         <img class="mobile" src="../images/bars.svg">
                     </span>
-                    <a href="../attendant/shopping_cart.html" class="logo font">SM</a>
+                    <a href="#" class="logo font">SM</a>
                     <ul class="main-nav" id="nav-menu">
-                        <li ><a class="links" href="create_attendant.html" >Create Staff</a></li>
-                        <li><a class="links" href="view_all_records.html">Records</a></li>
                         <li><a class="links" href="#">Products</a></li>
+                        <li><a class="links" href="view_all_records.html">Records</a></li>
+                        <li ><a class="links" href="create_attendant.html" >Staff</a></li>
                         <li><a class="links" href="../index.html" style="color: red">Logout</a></li>
                     </ul>
                 </nav>
@@ -45,7 +45,7 @@
                     <div class="cr2">
                         <input type="text" id="aquantity" placeholder="Quantity" class="first" required>
                     </div>
-                    <div><button class="btn" style="position: relative;left: 0;" onclick="addproduct()">Modify</button></div>
+                    <div><button class="btn" style="position: relative;left: 0;" onclick="addproduct()">Add Product</button></div>
                   </div>
 
                 </div>
@@ -94,54 +94,6 @@
                         <li class="column columnfive"></li>
                     </ul>
                     <div class="product-table" id="table">
-                        <ul class="product-columns product-row" id="item1">
-                            <li class="column columnone" id="id1">1</li>
-                            <li class="column columntwo" id="name1">Fish</li>
-                            <li class="column columnthree" id="price1">20000</li>
-                            <li class="column columnfour" id="qty1">
-                                500 units
-                            </li>
-                            <li class="column columnfive pos">
-                                <button id ="pdt1" class="btn st mod">Modify</button>
-                                <button class="btn st del">Delete</button>
-                            </li>
-                        </ul>
-                        <ul class="product-columns product-row" id="item2">
-                            <li class="column columnone" id="id2">2</li>
-                            <li class="column columntwo" id="name2">Beans</li>
-                            <li class="column columnthree" id="price2">20000</li>
-                            <li class="column columnfour" id="qty2">
-                                500 units
-                            </li>
-                            <li class="column columnfive pos">
-                                <button id ="pdt2" class="btn st mod">Modify</button>
-                                <button class="btn st del">Delete</button>
-                            </li>
-                        </ul>
-                        <ul class="product-columns product-row" id="item3">
-                            <li class="column columnone" id="id3">3</li>
-                            <li class="column columntwo" id="name3">Minced</li>
-                            <li class="column columnthree" id="price3">20000</li>
-                            <li class="column columnfour" id="qty3">
-                                500 units
-                            </li>
-                            <li class="column columnfive pos">
-                                <button id ="pdt3" class="btn st mod">Modify</button>
-                                <button class="btn st del">Delete</button>
-                            </li>
-                        </ul>
-                        <ul class="product-columns product-row" id="item4">
-                            <li class="column columnone" id="id4">4</li>
-                            <li class="column columntwo" id="name4">Fish</li>
-                            <li class="column columnthree" id="price4">20000</li>
-                            <li class="column columnfour" id="qty4">
-                                500 units
-                            </li>
-                            <li class="column columnfive pos">
-                                <button class="btn st mod">Modify</button>
-                                <button class="btn st del">Delete</button>
-                            </li>
-                        </ul>
                     </div>
                 </div>
 
@@ -150,50 +102,11 @@
             </div>
         </div>
     </div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/products.js"></script>
     <script src="../js/mobile.js"></script>
     <script src="../js/search.js"></script>
     <script>
-        var modifier = document.getElementById('modifier');
-        var div = document.getElementsByClassName('mod');
-        var i;
-        for(i = 0; i < div.length; i++){
-            div[i].onclick = function () {
-                console.log(this.parentNode.parentNode.id);
-                var ul = document.getElementById(this.parentNode.parentNode.id);
-                console.log(ul);
-                var kids = ul.children;
-                console.log(kids[0]);
-                document.getElementById('qb').innerText = kids[0].innerHTML;
-                document.getElementById('pname').value = kids[1].innerHTML;
-                document.getElementById('pprice').value = kids[2].innerHTML;
-                document.getElementById('pquantity').value = kids[3].innerHTML;
-                modifier.style.display = "block";
-            }
-
-        }
-        function edit() {
-            for (var li of document.querySelectorAll('li')){
-                if (document.getElementById('qb').innerText === li.innerText){
-                    var ul = document.getElementById(li.parentNode.id);
-                    ul.children[1].innerHTML = document.getElementById('pname').value;
-                    ul.children[2].innerHTML = document.getElementById('pprice').value;
-                    ul.children[3].innerHTML =  document.getElementById('pquantity').value;
-                    modifier.style.display = "none";
-                }
-            }
-        }
-        var del = document.getElementsByClassName('del');
-        var x;
-        for(i = 0; i < del.length; i++){
-            del[i].onclick = function () {
-                if(confirm('Are You Want To Delete?')){
-                    let name = this.parentNode.parentNode.children[1].innerHTML;
-                    this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
-                    alert('You have succesfully deleted ' + name);
-                }
-            }
-
-        }
 
         var span = document.getElementById('exit');
         span.onclick = function () {

@@ -17,7 +17,7 @@
 html, body {
     height: 100%;
     background-color: #eaeceb33;
-    font: 1.2em/1 "Proxima";
+    font: 100%/1.6875 "Proxima";
     text-align: center;
 }
 .wrapper {
@@ -54,7 +54,6 @@ div#error {
     padding: 0 51px 0 51px;
     font-size: 14px;
 }
-
 .box-section {
     display: flex;
     justify-content: center;
@@ -221,6 +220,12 @@ ul.bought {
 .cart {
     text-align: left;
     padding: 23px;
+}
+div#empty {
+    padding: 16px;
+    color: red;
+    font-weight: 700;
+    font-size: 129%;
 }
 ul.cart-items {
     list-style: none;
@@ -457,3 +462,14 @@ p#success {
         color: yellow;
     }
 }
+@media only screen and (max-width: 400px) {
+    body {
+        font-size:90%;
+    }
+}
+@media only screen and (max-width: 800px) {
+    body {
+        font-size:100%;
+    }
+}
+
