@@ -102,3 +102,30 @@ var modInit = {
         mode: 'cors',
         body:JSON.stringify({name:pname, price:pprice, quantity:pquantity})
     };
+
+function edit() {
+    let pname = document.getElementById('pname').value;
+    let pprice = parseInt(document.getElementById('pprice').value);
+    let pquantity = parseInt(document.getElementById('pquantity').value);
+    let modId = document.getElementById('qb').innerText;
+    for (var li of document.querySelectorAll('li')) {
+        if (modId === li.innerText) {
+            let ul = document.getElementById(li.parentNode.id);
+            var modify_url = 'http://127.0.0.1:5000/api/v1/products/' + parseInt(modId);
+            const myRequest = new Request(modify_url, modInit);
+            fetch(myRequest)
+                .then(handleResponse)
+                .then((data) => {
+                    console.log(data);
+                    ul.children[1].innerHTML = pname;
+                    ul.children[2].innerHTML = pprice;
+                    ul.children[3].innerHTML = pquantity;
+                    modifier.style.display = "none";
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+        }
+
+    }
+}
