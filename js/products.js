@@ -43,3 +43,10 @@ function allproducts() {
         console.log(error);
     });
 }
+
+var delInit = {
+    method: 'DELETE',
+    headers: myHeaders,
+    cache: 'default',
+    mode: 'cors'
+};
