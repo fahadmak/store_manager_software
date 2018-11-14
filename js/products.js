@@ -94,3 +94,11 @@ function pmod() {
         }
     }
 }
+
+var modInit = {
+        method: 'PUT',
+        headers: myHeaders,
+        cache: 'default',
+        mode: 'cors',
+        body:JSON.stringify({name:pname, price:pprice, quantity:pquantity})
+    };
