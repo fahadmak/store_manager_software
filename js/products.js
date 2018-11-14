@@ -50,3 +50,28 @@ var delInit = {
     cache: 'default',
     mode: 'cors'
 };
+
+function pdel() {
+    var del = document.getElementsByClassName('del');
+    var x;
+    for(i = 0; i < del.length; i++){
+        del[i].onclick = function () {
+            if(confirm('Are You Want To Delete?')){
+                var delete_url = 'http://127.0.0.1:5000/api/v1/products/' + this.id;
+                const myRequest = new Request(delete_url, delInit);
+                fetch(myRequest)
+                .then(handleResponse)
+                .then((data) => {
+                    let name = this.parentNode.parentNode.children[1].innerHTML;
+                    this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+                    alert('You have succesfully deleted ' + name);
+                    console.log(data)
+                })
+                .catch(function (error) {
+                console.log(error);
+                });
+            }
+        }
+
+    }
+}
