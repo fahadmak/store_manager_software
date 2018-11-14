@@ -7,6 +7,8 @@ let perrortext = document.querySelector('#perrortext');
 document.getElementById('logs').addEventListener('click', login);
 
 function login() {
+    let username = document.getElementById('username').value;
+    let password = document.getElementById('password').value;
 
 }
 
