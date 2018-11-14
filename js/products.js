@@ -16,7 +16,6 @@ var myInit = {
 
 const product_url = 'http://127.0.0.1:5000/api/v1/products';
 const myRequest = new Request(product_url, myInit);
-
 function allproducts() {
     fetch(myRequest)
     .then(handleResponse)
@@ -75,3 +74,59 @@ function pdel() {
 
     }
 }
+var modifier = document.getElementById('modifier');
+function pmod() {
+    var div = document.getElementsByClassName('mod');
+    var i;
+    for (i = 0; i < div.length; i++) {
+        div[i].onclick = function () {
+        console.log(this.parentNode.parentNode.id);
+        var ul = document.getElementById(this.parentNode.parentNode.id);
+        console.log(ul);
+        var kids = ul.children;
+        console.log(kids[0]);
+        document.getElementById('qb').innerText = kids[0].innerHTML;
+        document.getElementById('pname').value = kids[1].innerHTML;
+        document.getElementById('pprice').value = kids[2].innerHTML;
+        document.getElementById('pquantity').value = kids[3].innerHTML;
+        modifier.style.display = "block";
+        }
+    }
+}
+
+
+
+function edit() {
+    let pname = document.getElementById('pname').value;
+    let pprice = parseInt(document.getElementById('pprice').value);
+    let pquantity = parseInt(document.getElementById('pquantity').value);
+    var modInit = {
+        method: 'PUT',
+        headers: myHeaders,
+        cache: 'default',
+        mode: 'cors',
+        body:JSON.stringify({name:pname, price:pprice, quantity:pquantity})
+    };
+    let modId = document.getElementById('qb').innerText;
+    for (var li of document.querySelectorAll('li')) {
+        if (modId === li.innerText) {
+            let ul = document.getElementById(li.parentNode.id);
+            var modify_url = 'http://127.0.0.1:5000/api/v1/products/' + parseInt(modId);
+            const myRequest = new Request(modify_url, modInit);
+            fetch(myRequest)
+                .then(handleResponse)
+                .then((data) => {
+                    console.log(data);
+                    ul.children[1].innerHTML = pname;
+                    ul.children[2].innerHTML = pprice;
+                    ul.children[3].innerHTML = pquantity;
+                    modifier.style.display = "none";
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+        }
+
+    }
+}
+
