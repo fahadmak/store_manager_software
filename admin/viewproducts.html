@@ -16,11 +16,11 @@
                     <span class="nav-toggle" id="js-toggle">
                         <img class="mobile" src="../images/bars.svg">
                     </span>
-                    <a href="../attendant/shopping_cart.html" class="logo font">SM</a>
+                    <a href="#" class="logo font">SM</a>
                     <ul class="main-nav" id="nav-menu">
-                        <li ><a class="links" href="create_attendant.html" >Create Staff</a></li>
-                        <li><a class="links" href="view_all_records.html">Records</a></li>
                         <li><a class="links" href="#">Products</a></li>
+                        <li><a class="links" href="view_all_records.html">Records</a></li>
+                        <li ><a class="links" href="create_attendant.html" >Staff</a></li>
                         <li><a class="links" href="../index.html" style="color: red">Logout</a></li>
                     </ul>
                 </nav>
@@ -45,7 +45,7 @@
                     <div class="cr2">
                         <input type="text" id="aquantity" placeholder="Quantity" class="first" required>
                     </div>
-                    <div><button class="btn" style="position: relative;left: 0;" onclick="addproduct()">Modify</button></div>
+                    <div><button class="btn" style="position: relative;left: 0;" onclick="addproduct()">Add Product</button></div>
                   </div>
 
                 </div>
@@ -107,6 +107,7 @@
     <script src="../js/mobile.js"></script>
     <script src="../js/search.js"></script>
     <script>
+
         var span = document.getElementById('exit');
         span.onclick = function () {
             modifier.style.display = 'none';
@@ -120,6 +121,8 @@
         span1.onclick = function () {
             add.style.display = 'none';
         };
+
+
 
     </script>
 
