@@ -75,3 +75,22 @@ function pdel() {
 
     }
 }
+var modifier = document.getElementById('modifier');
+function pmod() {
+    var div = document.getElementsByClassName('mod');
+    var i;
+    for (i = 0; i < div.length; i++) {
+        div[i].onclick = function () {
+        console.log(this.parentNode.parentNode.id);
+        var ul = document.getElementById(this.parentNode.parentNode.id);
+        console.log(ul);
+        var kids = ul.children;
+        console.log(kids[0]);
+        document.getElementById('qb').innerText = kids[0].innerHTML;
+        document.getElementById('pname').value = kids[1].innerHTML;
+        document.getElementById('pprice').value = kids[2].innerHTML;
+        document.getElementById('pquantity').value = kids[3].innerHTML;
+        modifier.style.display = "block";
+        }
+    }
+}
