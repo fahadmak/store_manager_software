@@ -1,12 +1,12 @@
 table = document.getElementById('table');
 
-let myHeaders = new Headers({
+var myHeaders = new Headers({
         'Accept': 'application/json',
         'content-type': 'application/json',
         'Authorization' : 'Bearer '  + localStorage.getItem('token'),
     });
 
-let myInit = {
+var myInit = {
     method: 'GET',
     headers: myHeaders,
     cache: 'default',
@@ -15,14 +15,12 @@ let myInit = {
 
 
 const product_url = 'http://127.0.0.1:5000/api/v1/products';
-
 const myRequest = new Request(product_url, myInit);
-
 function allproducts() {
     fetch(myRequest)
     .then(handleResponse)
     .then((data) => {
-        let output = '';
+        var output = '';
         data.products.forEach(function (product) {
             output += '<ul class="product-columns product-row" id="item' + product.productId + '">\n' +
                 '<li class="column columnone" id="id' + product.productId + '">' + product.productId + '</li>\n' +
@@ -45,7 +43,7 @@ function allproducts() {
     });
 }
 
-let delInit = {
+var delInit = {
     method: 'DELETE',
     headers: myHeaders,
     cache: 'default',
@@ -53,12 +51,12 @@ let delInit = {
 };
 
 function pdel() {
-    let del = document.getElementsByClassName('del');
-    let x;
+    var del = document.getElementsByClassName('del');
+    var x;
     for(i = 0; i < del.length; i++){
         del[i].onclick = function () {
             if(confirm('Are You Want To Delete?')){
-                let delete_url = 'http://127.0.0.1:5000/api/v1/products/' + this.id;
+                var delete_url = 'http://127.0.0.1:5000/api/v1/products/' + this.id;
                 const myRequest = new Request(delete_url, delInit);
                 fetch(myRequest)
                 .then(handleResponse)
@@ -76,17 +74,16 @@ function pdel() {
 
     }
 }
-
-let modifier = document.getElementById('modifier');
+var modifier = document.getElementById('modifier');
 function pmod() {
-    let div = document.getElementsByClassName('mod');
-    let i;
+    var div = document.getElementsByClassName('mod');
+    var i;
     for (i = 0; i < div.length; i++) {
         div[i].onclick = function () {
         console.log(this.parentNode.parentNode.id);
-        let ul = document.getElementById(this.parentNode.parentNode.id);
+        var ul = document.getElementById(this.parentNode.parentNode.id);
         console.log(ul);
-        let kids = ul.children;
+        var kids = ul.children;
         console.log(kids[0]);
         document.getElementById('qb').innerText = kids[0].innerHTML;
         document.getElementById('pname').value = kids[1].innerHTML;
@@ -97,23 +94,24 @@ function pmod() {
     }
 }
 
-let modInit = {
+
+
+function edit() {
+    let pname = document.getElementById('pname').value;
+    let pprice = parseInt(document.getElementById('pprice').value);
+    let pquantity = parseInt(document.getElementById('pquantity').value);
+    var modInit = {
         method: 'PUT',
         headers: myHeaders,
         cache: 'default',
         mode: 'cors',
         body:JSON.stringify({name:pname, price:pprice, quantity:pquantity})
     };
-
-function edit() {
-    let pname = document.getElementById('pname').value;
-    let pprice = parseInt(document.getElementById('pprice').value);
-    let pquantity = parseInt(document.getElementById('pquantity').value);
     let modId = document.getElementById('qb').innerText;
-    for (let li of document.querySelectorAll('li')) {
+    for (var li of document.querySelectorAll('li')) {
         if (modId === li.innerText) {
             let ul = document.getElementById(li.parentNode.id);
-            let modify_url = 'http://127.0.0.1:5000/api/v1/products/' + parseInt(modId);
+            var modify_url = 'http://127.0.0.1:5000/api/v1/products/' + parseInt(modId);
             const myRequest = new Request(modify_url, modInit);
             fetch(myRequest)
                 .then(handleResponse)
@@ -131,3 +129,4 @@ function edit() {
 
     }
 }
+
