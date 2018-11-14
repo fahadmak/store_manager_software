@@ -6,6 +6,10 @@ let perrortext = document.querySelector('#perrortext');
 
 document.getElementById('logs').addEventListener('click', login);
 
+function login() {
+
+}
+
 function load(url) {
     location.href = url;
 }
