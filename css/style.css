@@ -297,6 +297,13 @@ span#close {
 .cr2 {
     padding: 9px;
 }
+.categories {
+    width: 252px;
+    height: 37px;
+    padding: 10px;
+    border-bottom: 1px solid #cacaff66;
+}
+
 .form-xtics {
     background-color: #00bcd4d4;
     margin: 15% auto;
