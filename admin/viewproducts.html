@@ -83,7 +83,7 @@
                 <div class="available" id= 'display' style="padding-top: 17px;">
                     <div class="srch">
                         <h3 style="padding-bottom: 13px;">Available Products</h3>
-                        <button id ="add-btn" class="btn st mod">Add Product</button>
+                        <button id ="add-btn" class="btn st mod" onclick="makeproduct()">Add Product</button>
                         <input type="text" id="search" onkeyup="searching()" placeholder="Enter Product Name">
                     </div>
                     <ul class="product-columns">
@@ -111,11 +111,6 @@
         var span = document.getElementById('exit');
         span.onclick = function () {
             modifier.style.display = 'none';
-        };
-        var add = document.getElementById('add');
-        var btn = document.getElementById('add-btn');
-        btn.onclick = function () {
-            add.style.display = 'block';
         };
         var span1 = document.getElementById('close');
         span1.onclick = function () {
