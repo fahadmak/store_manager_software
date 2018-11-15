@@ -34,9 +34,8 @@ function allproducts() {
                 '<button id="' + product.productId + '" class="btn st del" onclick="pdel()">Delete</button>\n' +
                 '</li>\n' +
                 '</ul>';
-
-            table.innerHTML = output;
-        })
+        });
+        table.innerHTML = output
     })
     .catch(function (error) {
         console.log(error);
@@ -132,9 +131,27 @@ function edit() {
 
 document.getElementById('add-btn').addEventListener('click', makeproduct);
 
+const category_url = 'http://127.0.0.1:5000/api/v1/categories';
+
+const catRequest = new Request(category_url, myInit);
+cats = document.getElementById('all-cats');
+
+
 function makeproduct(){
-    var add = document.getElementById('add');
-    add.style.display = 'block';
+    fetch(catRequest)
+    .then(handleResponse)
+    .then((data) => {
+        var output = '<option id="options" selected disabled>Choose a category</option>';
+        data.categories.forEach(function (category) {
+            output += '<option value="' + category.categoryId + '">' + category.name +'</option>';
+        });
+        cats.innerHTML = output;
+        var add = document.getElementById('add');
+        add.style.display = 'block'
 
-
+    })
+    .catch(function (error) {
+        alert('There are no categories available');
+    });
 }
+
