@@ -130,3 +130,11 @@ function edit() {
     }
 }
 
+document.getElementById('add-btn').addEventListener('click', makeproduct);
+
+function makeproduct(){
+    var add = document.getElementById('add');
+    add.style.display = 'block';
+
+
+}
