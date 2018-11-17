@@ -50,18 +50,6 @@ function login() {
                 uerrortext.style.display = 'none'
             }, 5000)
             }
-            if (error.username && error.password){
-                uerrortext.style.display = 'block';
-                uerrortext.innerText = 'Username should contain at least 4 letters and a number';
-                setTimeout(function () {
-                uerrortext.style.display = 'none'
-            }, 5000);
-                perrortext.style.display = 'block';
-                perrortext.innerText = 'Password should contain at least 4 letters and a number';
-                setTimeout(function () {
-                perrortext.style.display = 'none'
-            }, 5000)
-            }
             console.log('Request failed', error);
         }
     });
