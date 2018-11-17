@@ -33,24 +33,28 @@
             <div class="col-12">
                 <div id="add" class="content">
 
-                  <!-- Modify Box -->
+                  <!-- Add Box -->
                     <div class="form-xtics">
                         <span id="close">&times;</span>
                         <div class="cr2">
+                            <p id="acerrortext" class="stc"></p>
                             <select id="all-cats" class="categories">
                             </select>
                         </div>
                         <div class="cr2">
+                            <p id="anerrortext" class="stc"></p>
                             <input type="text" id="aname" placeholder="Name of Product" class="first">
                         </div>
                         <div class="cr2">
+                            <p id="aperrortext" class="stc"></p>
                             <input type="text" id="aprice" placeholder="Price of Product" class="first" required>
                         </div>
                         <div class="cr2">
+                            <p id="aqerrortext" class="stc"></p>
                             <input type="text" id="aquantity" placeholder="Quantity" class="first" required>
                         </div>
                         <div>
-                            <button class="btn" style="position: relative;left: 0;" onclick="addproduct()">Add Product</button>
+                            <button class="btn" id ="add-pdt" style="position: relative;left: 0;" onclick="addproduct()">Add Product</button>
                         </div>
                   </div>
 
@@ -67,12 +71,15 @@
                       <span id="exit">&times;</span>
                     <span style="display: none" id="qb"></span>
                     <div class="cr2">
+                        <p id="nerrortext" class="stc"></p>
                         <input type="text" id="pname" placeholder="Name of Product" class="first">
                     </div>
                     <div class="cr2">
+                        <p id="perrortext" class="stc"></p>
                         <input type="text" id="pprice" placeholder="Price of Product" class="first" required>
                     </div>
                     <div class="cr2">
+                        <p id="qerrortext" class="stc"></p>
                         <input type="text" id="pquantity" placeholder="Quantity" class="first" required>
                     </div>
                     <div><button class="btn" onclick="edit()">Modify</button></div>
