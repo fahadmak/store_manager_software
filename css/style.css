@@ -54,6 +54,12 @@ div#error {
     padding: 0 51px 0 51px;
     font-size: 14px;
 }
+.stc{
+    display: block;
+    color: white;
+    padding: 0 51px 0 51px;
+    font-size: 14px;
+}
 .box-section {
     display: flex;
     justify-content: center;
