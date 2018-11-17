@@ -1,3 +1,7 @@
+let nerrortext = document.querySelector('#nerrortext');
+let qerrortext = document.querySelector('#qerrortext');
+let perrortext = document.querySelector('#perrortext');
+
 table = document.getElementById('table');
 
 var myHeaders = new Headers({
@@ -113,17 +117,37 @@ function edit() {
             var modify_url = 'http://127.0.0.1:5000/api/v1/products/' + parseInt(modId);
             const myRequest = new Request(modify_url, modInit);
             fetch(myRequest)
-                .then(handleResponse)
-                .then((data) => {
-                    console.log(data);
-                    ul.children[1].innerHTML = pname;
-                    ul.children[2].innerHTML = pprice;
-                    ul.children[3].innerHTML = pquantity;
-                    modifier.style.display = "none";
-                })
-                .catch(function (error) {
-                    console.log(error)
-                })
+            .then(handleResponse)
+            .then((data) => {
+                console.log(data);
+                window.location.reload();
+            })
+            .catch(function (error) {
+                if (error){
+                    console.log(error);
+                    nerrortext.style.display = 'block';
+                    nerrortext.innerText= 'product name should contain at least letters or a number';
+                    setTimeout(function () {
+                    nerrortext.style.display = 'none'
+                    }, 5000)
+                    }
+                if (error.error.price){
+                    console.log(error.error.price);
+                    perrortext.style.display = 'block';
+                    perrortext.innerText = 'price should be greater than zero';
+                    setTimeout(function () {
+                    perrortext.style.display = 'none'
+                }, 5000)
+                }
+                if (error.error.quantity){
+                    console.log(error.error.quantity);
+                    qerrortext.style.display = 'block';
+                    qerrortext.innerText = 'quantity should be greater than zero';
+                    setTimeout(function () {
+                    qerrortext.style.display = 'none'
+                }, 5000)
+                }
+            })
         }
 
     }
@@ -155,3 +179,66 @@ function makeproduct(){
     });
 }
 
+let anerrortext = document.querySelector('#anerrortext');
+let aqerrortext = document.querySelector('#aqerrortext');
+let aperrortext = document.querySelector('#aperrortext');
+let acerrortext = document.querySelector('#acerrortext');
+
+function addproduct() {
+    let categoryselect = document.getElementById('all-cats');
+    let category_id = parseInt(categoryselect.options[categoryselect.selectedIndex].value);
+    let aname = document.getElementById('aname').value;
+    let aprice = parseInt(document.getElementById('aprice').value);
+    let aquantity = parseInt(document.getElementById('aquantity').value);
+    var addInit = {
+        method: 'POST',
+        headers: myHeaders,
+        cache: 'default',
+        mode: 'cors',
+        body:JSON.stringify({category_id: category_id, name:aname, price:aprice, quantity:aquantity})
+    };
+    var add_url = 'http://127.0.0.1:5000/api/v1/products';
+    const addRequest = new Request(add_url, addInit);
+    fetch(addRequest)
+    .then(handleResponse)
+    .then((data) => {
+        window.location.reload();
+        console.log(data);
+        return 'product' + data.name + ' has been added';
+    })
+    .catch(function (error) {
+        console.log(error.error.category_id);
+        if (error.error.category_id){
+            acerrortext.style.display = 'block';
+            acerrortext.innerText= 'Please select a category';
+            setTimeout(function () {
+            acerrortext.style.display = 'none'
+            }, 5000)
+            }
+        if (error.error.name){
+            console.log(error.error.name);
+            anerrortext.style.display = 'block';
+            anerrortext.innerText= 'product name should contain at least letters or a number';
+            setTimeout(function () {
+            anerrortext.style.display = 'none'
+            }, 5000)
+            }
+        if (error.error.price){
+            console.log(error.error.price);
+            aperrortext.style.display = 'block';
+            aperrortext.innerText = 'price should be greater than zero';
+            setTimeout(function () {
+            aperrortext.style.display = 'none'
+        }, 5000)
+        }
+        if (error.error.quantity){
+            console.log(error.error.quantity);
+            aqerrortext.style.display = 'block';
+            aqerrortext.innerText = 'quantity should be greater than zero';
+            setTimeout(function () {
+            aqerrortext.style.display = 'none'
+        }, 5000)
+        }
+    });
+
+}
