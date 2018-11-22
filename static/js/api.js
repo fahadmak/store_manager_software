@@ -21,12 +21,14 @@ function login() {
     .then((data) => {
         if (data.admin === true){
             localStorage.setItem('token', data.access_token);
+            localStorage.setItem('user_id', data.user_id);
             console.log(localStorage.getItem('token'));
-            load('admin/viewproducts.html');
+            location.href = './admin/products.html';
         } else {
             localStorage.setItem('token', data.access_token);
+            localStorage.setItem('user_id', data.user_id);
             console.log(localStorage.getItem('token'));
-            load('attendant/shopping_cart.html');
+            location.href = 'attendant/shopping_cart.html';
         }})
     .catch(function (error) {
         if (error.error === 'Username and password did not match'){

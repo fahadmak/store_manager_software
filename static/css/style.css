@@ -285,6 +285,9 @@ button.btn.st {
 button.btn.st.del {
     background-color: red;
 }
+button.btn.st.promo {
+    background-color: #00aeef;
+}
 button.btn.st.mod {
     background-color: #13d844;
 }
@@ -309,7 +312,27 @@ span#close {
     padding: 10px;
     border-bottom: 1px solid #cacaff66;
 }
-
+input.apple-switch {
+    position: relative;
+    appearance: none;
+    outline: none;
+    width: 50px; height: 30px;
+    background-color: #ffffff; border: 1px solid #D9DADC;
+    border-radius: 50px; box-shadow: inset -20px 0 0 0 #ffffff;
+    transition-duration: 200ms;
+}
+input.apple-switch:after {
+     content: "";
+     position: absolute;
+     top: 1px; left: 1px;
+     width: 26px; height: 26px;
+     background-color: transparent;
+     border-radius: 50%; box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
+}
+input.apple-switch:checked {
+     border-color: #4ED164;
+     box-shadow: inset 20px 0 0 0 #4ED164;
+}
 .form-xtics {
     background-color: #00bcd4d4;
     margin: 15% auto;
@@ -352,6 +375,9 @@ li.column.columnfour {
 }
 li.column.columnfive {
     width: 20%;
+}
+li.column.columnsix {
+    width: 30%;
 }
 li.cr {
     text-align: left;
