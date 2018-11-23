@@ -238,6 +238,11 @@ ul.cart-items {
     display: flex;
     padding: 15px;
 }
+.btn-layout{
+    position: relative;
+    bottom: 5px;
+    display: flex;
+}
 .product-table {
 	text-align: center;
 }
