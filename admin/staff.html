@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Products | The Shopping Cart (Admin)</title>
+    <title>Staff | The Shopping Cart (Admin)</title>
     <link rel="stylesheet" href=../static/css/style.css>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -59,7 +59,7 @@
                             <div class="form-section last">
                                 <label class="holder"> Confirm Password</label>
                                 <br>
-                                <input type="password" id="confirm_password" placeholder="********" class="first" required>
+                                <input type="password" id="confirm_password"  onkeyup="validate()" placeholder="********" class="first" required>
                             </div>
                         </div>
                         <br>
@@ -127,6 +127,7 @@
     <script src="../static/js/products.js"></script>
     <script src="../static/js/mobile.js"></script>
     <script src="../static/js/search.js"></script>
+    <script src="../static/js/validation.js"></script>
     <script>
 
         var span = document.getElementById('exit');
@@ -134,7 +135,7 @@
             modifier.style.display = 'none';
         };
 
-        var add = document.getElementById('addUser')
+        var add = document.getElementById('addUser');
         var span1 = document.getElementById('close');
         span1.onclick = function () {
             add.style.display = 'none';
