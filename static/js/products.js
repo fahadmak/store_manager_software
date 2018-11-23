@@ -462,7 +462,7 @@ function available() {
                 '</li>\n' +
                 '<li class="btn-layout column column4">\n' +
                 '<input class="msn" placeholder="QTY" onkeyup="check_quantity()" type="text" id="qtya' + product.productId + '">\n' +
-                '<button id="cart' + product.productId + '" class="btn" onclick="addItem()">Add to Cart</button>\n' +
+                '<button id="cart' + product.productId + '" class="btn btn-cart" onclick="add_cart_item()">Add to Cart</button>\n' +
                 '</li>\n' +
                 '</ul>';
             }
@@ -497,7 +497,41 @@ function check_quantity() {
                 this.value = '';
                 return false
             }
+            localStorage.setItem('quantity', this.value);
+        }
+    }
+}
 
+function add_cart_item() {
+    let item = document.getElementsByClassName('btn-cart');
+    let bought = document.getElementById("bought");
+    let empty = document.getElementById("empty");
+    let i;
+    let output;
+    for(i = 0; i < item.length; i++) {
+        item[i].onclick = function () {
+            let quantity = parseInt(localStorage.getItem('quantity'));
+            let input_id = parseInt(this.id.replace(/[^\d.]/g,''));
+            let price = parseInt(document.getElementById('prices' + input_id).innerText);
+            let pdt_name = document.getElementById('names' + input_id).innerText;
+            let cost_price = quantity * price;
+            console.log(price);
+            console.log(quantity);
+            let products = JSON.parse(localStorage.getItem('pdtsinfo')) || [];
+            products.push({product_id: input_id, quantity: quantity});
+            localStorage.setItem('pdtsinfo', JSON.stringify(products));
+            console.log(localStorage.getItem('pdtsinfo'));
+            output += '<ul class="product-columns product-row">' +
+                    '<li class="column columntwo">' +  pdt_name + '</li>' +
+                    '<li class="column columnthree">' + quantity + '</li>' +
+                    '<li class="column columnfour">' + cost_price +
+                    '</li>' +
+                    '<li class="column columnfive pos">' +
+                    '<button class="btn st del" onclick="udel()">Delete</button>' +
+                    '</li>' +
+                    '</ul>';
+            empty.innerHTML = "";
+            bought.innerHTML = output
         }
     }
 }
