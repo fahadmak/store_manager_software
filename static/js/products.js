@@ -447,4 +447,31 @@ function userbox() {
     document.getElementById('addUser').style.display = "block";
 }
 
+function available() {
+    fetch(myRequest)
+    .then(handleResponse)
+    .then((data) => {
+        let output = '';
+        data.products.forEach(function (product) {
+            if (product.quantity > 0){
+                output += '<ul class="product-columns product-row" id="item' + product.productId + '">\n' +
+                '<li class="column column1" id="names' + product.productId + '">' + product.name + '</li>\n' +
+                '<li class="column column2" id="prices' + product.productId + '">' + product.price + '</li>\n' +
+                '<li class="column column3" id="qtys' + product.productId + '">\n' +
+                '' + product.quantity +
+                '</li>\n' +
+                '<li class="btn-layout column column4">\n' +
+                '<input class="qty" placeholder="QTY" type="text" id="qtya' + product.productId + '">\n' +
+                '<button id="cart' + product.productId + '" class="btn" onclick="addItem()">Add to Cart</button>\n' +
+                '</li>\n' +
+                '</ul>';
+            }
+
+        });
+        document.getElementById("sold").innerHTML = output
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
 
