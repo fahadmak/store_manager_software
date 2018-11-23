@@ -58,12 +58,14 @@
                             <ul class="product-columns">
                                 <li class="column column1">Product Name</li>
                                 <li class="column column2">Price</li>
-                                <li class="column column3">Quantity</li>
+                                <li class="column column3">Stock Level</li>
+                                <li class="column column4">Quantity</li>
                             </ul>
                             <ul class="product-columns product-row">
                                 <li class="column column1" id="name1">Royco-Curry-Powder-(50gm)</li>
                                 <li class="column column2" id="price1">200</li>
-                                <li style="position: relative;bottom: 5px;display: flex;" class="column column3">
+                                <li class="column column3" id="stock1">200</li>
+                                <li style="position: relative;bottom: 5px;display: flex;" class="column column4">
                                     <input class="qty" placeholder="QTY" type="text" id="qty1">
                                     <button class="btn" onclick="addItem('name1', 'price1', 'qty1')">Add to Cart</button>
                                 </li>
@@ -71,7 +73,8 @@
                             <ul class="product-columns product-row">
                                 <li class="column column1" id="name2">Fish</li>
                                 <li class="column column2" id="price2">20000</li>
-                                <li style="position: relative;bottom: 5px;display: flex;" class="column column3">
+                                <li class="column column3" id="stock2">200</li>
+                                <li style="position: relative;bottom: 5px;display: flex;" class="column column4">
                                     <input class="qty" placeholder="QTY" type="text" id="qty2">
                                     <button class="btn" onclick="addItem('name2', 'price2', 'qty2')">Add to Cart</button>
                                 </li>
