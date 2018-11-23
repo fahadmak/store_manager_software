@@ -461,7 +461,7 @@ function available() {
                 '' + product.quantity +
                 '</li>\n' +
                 '<li class="btn-layout column column4">\n' +
-                '<input class="qty" placeholder="QTY" type="text" id="qtya' + product.productId + '">\n' +
+                '<input class="msn" placeholder="QTY" onkeyup="check_quantity()" type="text" id="qtya' + product.productId + '">\n' +
                 '<button id="cart' + product.productId + '" class="btn" onclick="addItem()">Add to Cart</button>\n' +
                 '</li>\n' +
                 '</ul>';
@@ -475,3 +475,29 @@ function available() {
     });
 }
 
+function check_quantity() {
+    let qre = document.getElementsByClassName('msn');
+    let i;
+    for(i = 0; i < qre.length; i++) {
+        qre[i].onkeyup = function () {
+            let re = /^[1-9]\d*$/g;
+            if (!re.test(this.value)){
+                alert('should decimal');
+                this.value = '';
+                return false
+            }
+            let input_id = this.id.replace(/[^\d.]/g,'');
+            let input_quantity = parseInt(this.value);
+            let stock_level = parseInt(document.getElementById('qtys' + input_id).innerText);
+            console.log(input_id);
+            console.log(input_quantity);
+            console.log(stock_level);
+            if (input_quantity >= stock_level){
+                alert("Try a lower quantity" + ' less than ' + stock_level);
+                this.value = '';
+                return false
+            }
+
+        }
+    }
+}
