@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff | The Shopping Cart (Admin)</title>
+    <link rel="stylesheet" href=../static/css/style.css>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body onload="allusers()">
+    <div class="wrapper">
+        <div class="row" id="niv">
+            <div class="col-12">
+
+                <!--Top Bar Side Navigation-->
+                <nav class="bar">
+                    <span class="nav-toggle" id="js-toggle">
+                        <img class="mobile" src="../static/images/bars.svg">
+                    </span>
+                    <a href="#" class="logo font">SM</a>
+                    <ul class="main-nav" id="nav-menu">
+                        <li><a class="links" href="#">Staff</a></li>
+                        <li><a class="links" href="records.html">Records</a></li>
+                        <li ><a class="links" href="products.html" >Products</a></li>
+                        <li><a class="links" href="../index.html" style="color: red">Logout</a></li>
+                    </ul>
+                </nav>
+
+                <!--Top Bar Navigation-->
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="addUser" class="content">
+
+                  <!-- Add Box -->
+                    <div class="form-xtics">
+                        <span id="close">&times;</span>
+                        <h2 class="welcome" id="wel">Create Sales Attendant</h2>
+                        <div class="box-section">
+                            <div class="form-section">
+                                <label class="holder">Name</label>
+                                <br>
+                                <input type="text" id="name" class="first" placeholder="Name" required>
+                            </div>
+                            <div class="form-section last">
+                                <label class="holder">User Name</label>
+                                <br>
+                                <input type="text" id='username' class="first" placeholder="User Name" required>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="box-section">
+                            <div class="form-section">
+                                <label class="holder">Password</label>
+                                <br>
+                                <input type="password" id="password" placeholder="********" class="first" required>
+                            </div>
+                            <div class="form-section last">
+                                <label class="holder"> Confirm Password</label>
+                                <br>
+                                <input type="password" id="confirm_password"  onkeyup="validate()" placeholder="********" class="first" required>
+                            </div>
+                        </div>
+                        <br>
+                        <input class="sb" type="submit" id="submit-button" name="submit-button" onclick="adduser()" value="Create Attn">
+                  </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div id="modifier" class="content">
+
+                  <!-- Modify Box -->
+                  <div class="form-xtics">
+                      <span id="exit">&times;</span>
+                    <span style="display: none" id="qb"></span>
+                    <div class="cr2">
+                        <p id="nerrortext" class="stc"></p>
+                        <input type="text" id="pname" placeholder="Name of Product" class="first">
+                    </div>
+                    <div class="cr2">
+                        <p id="perrortext" class="stc"></p>
+                        <input type="text" id="pprice" placeholder="Price of Product" class="first" required>
+                    </div>
+                    <div class="cr2">
+                        <p id="qerrortext" class="stc"></p>
+                        <input type="text" id="pquantity" placeholder="Quantity" class="first" required>
+                    </div>
+                    <div><button class="btn" onclick="edit()">Modify</button></div>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+                <!--Table with all Products-->
+
+                <div class="available" id= 'display' style="padding-top: 17px;">
+                    <div class="srch">
+                        <h3 style="padding-bottom: 13px;">All Users</h3>
+                        <button id ="add-user" class="btn st mod" onclick="userbox()">Create User</button>
+                        <input type="text" id="search" onkeyup="searching()" placeholder="Enter Name">
+                    </div>
+                    <ul class="product-columns">
+                        <li class="column columnone">Id No.</li>
+                        <li class="column columntwo">Name</li>
+                        <li class="column columnthree">User Name</li>
+                        <li class="column columnfour">Status</li>
+                        <li class="column columnsix"></li>
+                    </ul>
+                    <div class="product-table" id="table">
+                    </div>
+                </div>
+
+                <!--End of Table with all Products-->
+
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/utils.js"></script>
+    <script src="../static/js/products.js"></script>
+    <script src="../static/js/mobile.js"></script>
+    <script src="../static/js/search.js"></script>
+    <script src="../static/js/validation.js"></script>
+    <script>
+
+        var span = document.getElementById('exit');
+        span.onclick = function () {
+            modifier.style.display = 'none';
+        };
+
+        var add = document.getElementById('addUser');
+        var span1 = document.getElementById('close');
+        span1.onclick = function () {
+            add.style.display = 'none';
+        };
+
+
+
+    </script>
+
+</body>
+</html>

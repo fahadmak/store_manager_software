@@ -21,12 +21,14 @@ function login() {
     .then((data) => {
         if (data.admin === true){
             localStorage.setItem('token', data.access_token);
+            localStorage.setItem('user_id', data.user_id);
             console.log(localStorage.getItem('token'));
-            load('admin/viewproducts.html');
+            location.href = './admin/products.html';
         } else {
             localStorage.setItem('token', data.access_token);
+            localStorage.setItem('user_id', data.user_id);
             console.log(localStorage.getItem('token'));
-            load('attendant/shopping_cart.html');
+            location.href = 'attendant/shopping_cart.html';
         }})
     .catch(function (error) {
         if (error.error === 'Username and password did not match'){
@@ -48,18 +50,6 @@ function login() {
                 uerrortext.innerText = 'Username should contain at least 4 letters and a number';
                 setTimeout(function () {
                 uerrortext.style.display = 'none'
-            }, 5000)
-            }
-            if (error.username && error.password){
-                uerrortext.style.display = 'block';
-                uerrortext.innerText = 'Username should contain at least 4 letters and a number';
-                setTimeout(function () {
-                uerrortext.style.display = 'none'
-            }, 5000);
-                perrortext.style.display = 'block';
-                perrortext.innerText = 'Password should contain at least 4 letters and a number';
-                setTimeout(function () {
-                perrortext.style.display = 'none'
             }, 5000)
             }
             console.log('Request failed', error);
