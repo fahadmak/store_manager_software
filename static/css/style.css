@@ -259,13 +259,16 @@ ul.product-columns.product-row {
 	padding: 0 12px;
 }
 .column1 {
-    width: 50%;
+    width: 40%;
 }
 .column2 {
-    width: 25%;
+    width: 20%;
 }
 .column3 {
-    width: 25%;
+    width: 20%;
+}
+.column4 {
+    width: 20%;
 }
 .btn {
 	height: 35px;
