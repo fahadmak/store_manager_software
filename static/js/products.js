@@ -441,8 +441,6 @@ function promote() {
     }
 }
 
-
-
 function userbox() {
     document.getElementById('addUser').style.display = "block";
 }
@@ -453,7 +451,7 @@ function available() {
     .then((data) => {
         let output = '';
         data.products.forEach(function (product) {
-            if (product.quantity > 0){
+            if (product.quantity > 1){
                 output += '<ul class="product-columns product-row" id="item' + product.productId + '">\n' +
                 '<li class="column column1" id="names' + product.productId + '">' + product.name + '</li>\n' +
                 '<li class="column column2" id="prices' + product.productId + '">' + product.price + '</li>\n' +
@@ -497,41 +495,155 @@ function check_quantity() {
                 this.value = '';
                 return false
             }
-            localStorage.setItem('quantity', this.value);
         }
     }
 }
 
 function add_cart_item() {
     let item = document.getElementsByClassName('btn-cart');
-    let bought = document.getElementById("bought");
-    let empty = document.getElementById("empty");
-    let i;
     let output;
-    for(i = 0; i < item.length; i++) {
+    for(let i = 0; i < item.length; i++) {
         item[i].onclick = function () {
-            let quantity = parseInt(localStorage.getItem('quantity'));
             let input_id = parseInt(this.id.replace(/[^\d.]/g,''));
+            let qty = document.getElementById("qtya" + input_id).value;
             let price = parseInt(document.getElementById('prices' + input_id).innerText);
             let pdt_name = document.getElementById('names' + input_id).innerText;
+            let quantity = parseInt(qty);
             let cost_price = quantity * price;
             console.log(price);
             console.log(quantity);
+            if (qty === '' ){
+                alert("Include input");
+                return false
+            }
             let products = JSON.parse(localStorage.getItem('pdtsinfo')) || [];
+            var m = products.findIndex(product => product.product_id===input_id);
+            if (m !== -1){
+                alert("Already in the cart");
+                return false
+            }
             products.push({product_id: input_id, quantity: quantity});
-            localStorage.setItem('pdtsinfo', JSON.stringify(products));
-            console.log(localStorage.getItem('pdtsinfo'));
-            output += '<ul class="product-columns product-row">' +
+            output += '<ul class="product-columns product-row" id="stack' + input_id + '">' +
                     '<li class="column columntwo">' +  pdt_name + '</li>' +
                     '<li class="column columnthree">' + quantity + '</li>' +
                     '<li class="column columnfour">' + cost_price +
                     '</li>' +
-                    '<li class="column columnfive pos">' +
-                    '<button class="btn st del" onclick="udel()">Delete</button>' +
-                    '</li>' +
                     '</ul>';
-            empty.innerHTML = "";
-            bought.innerHTML = output
+            document.getElementById("empty").innerHTML = "";
+            document.getElementById("bought").innerHTML = output;
+            document.getElementById('create').style.display = "block";
+            localStorage.setItem('pdtsinfo', JSON.stringify(products));
+            console.log(localStorage.getItem('pdtsinfo'));
         }
     }
 }
+
+function createRecord() {
+    let saleInit = {
+        method: 'POST',
+        headers: myHeaders,
+        cache: 'default',
+        mode: 'cors',
+        body:JSON.stringify({cart: JSON.parse(localStorage.getItem('pdtsinfo'))})
+    };
+    let sale_url = 'http://127.0.0.1:5000/api/v1/sales';
+    const addRequest = new Request(sale_url, saleInit);
+    fetch(addRequest)
+    .then(handleResponse)
+    .then((data) => {
+        // window.location.reload();
+        console.log(data);
+        let products = [];
+        localStorage.setItem('pdtsinfo', JSON.stringify(products));
+        document.getElementById("bought").innerHTML = "";
+        document.getElementById('create').style.display = "none";
+        window.location.reload();
+        return 'product' + data.name + ' has been added';
+    })
+    .catch(function (error) {
+        console.log(error);
+    })
+}
+
+function item_delete() {
+
+    let input_id = parseInt(event.srcElement.id.replace(/[^\d.]/g, ''));
+    let element = document.getElementById("stack" + input_id);
+    let products = JSON.parse(localStorage.getItem('pdtsinfo'));
+    var m = products.findIndex(product => product.product_id===input_id);
+    if (m !== -1){
+        products.splice(m, 1);
+        localStorage.setItem('pdtsinfo', JSON.stringify(products));
+        console.log(localStorage.getItem('pdtsinfo'));
+        localStorage.removeItem('pdtinfo');
+        document.getElementById("bought").removeChild(element)
+
+    }
+
+}
+
+function single_user(user_id) {
+    let user_url = 'http://127.0.0.1:5000/api/v1/users/' + user_id;
+    const userRequest = new Request(user_url, myInit);
+    let name;
+    fetch(userRequest)
+    .then(handleResponse)
+    .then((data) => {
+        name = data.user.username;
+        console.log(name);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+    return 6;
+}
+
+
+function single_user_records() {
+    let sales_url = 'http://127.0.0.1:5000/api/v1/sales/' + localStorage.getItem('user_id');
+    const saleRequest = new Request(sales_url, myInit);
+    let output;
+    fetch(saleRequest)
+    .then(handleResponse)
+    .then((data) => {
+        let sales = data.sales;
+        for (let i = 0; i < sales.length; i++) {
+            output += '<ul class="product-columns product-row" id="item' + sales[i].sale_id + '">' +
+                '<li class="column columnone" id="saleid' + sales[i].sale_id + '">' + sales[i].sale_id + '</li>' +
+                '<li class="column columntwo" id="date' + sales[i].sale_id + '">' + sales[i].sale_date + '</li>' +
+                '<li class="column columnthree" id="blank' + sales[i].sale_id + '">' + "" + '</li>' +
+                '<li class="column columnfour" id="total' + sales[i].sale_id + '">' + sales[i].total + '</li>' +
+                '<li class="column columnfive">' + '</li>' +
+                '</ul>';
+        }
+        document.getElementById("record").innerHTML = output
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
+
+function user_records() {
+    let all_sales_url = 'http://127.0.0.1:5000/api/v1/sales';
+    const allSaleRequest = new Request(all_sales_url, myInit);
+    let output;
+    fetch(allSaleRequest)
+    .then(handleResponse)
+    .then((data) => {
+        let sales = data.sales;
+        for (let i = 0; i < sales.length; i++) {
+            output += '<ul class="product-columns product-row" id="item' + sales[i].sale_id + '">' +
+                '<li class="column columnone" id="saleid' + sales[i].sale_id + '">' + sales[i].sale_id + '</li>' +
+                '<li class="column columntwo" id="date' + sales[i].sale_id + '">' + sales[i].sale_date + '</li>' +
+                '<li class="column columnthree" id="blank' + sales[i].sale_id + '">' + "" + '</li>' +
+                '<li class="column columnfour" id="total' + sales[i].sale_id + '">' + sales[i].total + '</li>' +
+                '<li class="column columnfive">' + '</li>' +
+                '</ul>';
+        }
+        document.getElementById("record").innerHTML = output
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
+
