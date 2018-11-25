@@ -40,9 +40,16 @@
                     <div class="cart">
                         <h3 style="padding-bottom: 13px;">Shopping Cart</h3>
                         <div class="cart-items" id="shop-cart">
+                            <ul class="product-columns">
+                                <li class="column columntwo">Product Name</li>
+                                <li class="column columnthree">Quantity</li>
+                                <li class="column columnfour">Cost Price</li>
+                                <li class="column columnfive"></li>
+                            </ul>
+                            <div id="bought"></div>
                             <div id="empty">There currently no items</div>
                         </div>
-                        <p style="padding: 11px;">Total<span id="total" style="padding: 0 0 0 18px;">0</span></p>
+                        <!--<p style="padding: 11px;">Total<span id="total" style="padding: 0 0 0 18px;">0</span></p>-->
                         <div style="padding: 12px 0;">
                                 <button id="create" class="btn" onclick="createRecord()" style="left: 9px;">Create Record</button>
                         </div>
@@ -68,37 +75,12 @@
 
                     <!--End of Products Available-->
 
-                    <!--Sales records-->
-
-                    <div class="available" style="padding-top: 28px;">
-                        <h3 style="padding-bottom: 13px;">sales-record</h3>
-                        <div class="product-table">
-                            <ul class="product-columns">
-                                <li class="column columnone">ID No.</li>
-                                <li class="column columntwo">Product Name</li>
-                                <li class="column columnthree">Price</li>
-                                <li class="column columnfour">Quantity</li>
-                                <li class="column columnfive">Total</li>
-                            </ul>
-                            <div class="cart-items" id="record"></div>
-
-                        </div>
-                    </div>
-                    <div id="gen">
-                        <p style="padding-top: 5px;text-align: right;">
-                            Total<span id="final-total" style="padding: 0 0 0 18px;">0</span>
-                        </p>
-                        <button class="btn" onclick="generate()">Generate Report</button>
-                    </div>
-
-                    <!--End of Sales record-->
-
                 </div>
             </div>
         </div>
     </div>
     <script src="../static/js/mobile.js"></script>
-    <script src="../static/js/cart.js"></script>
+    <!--<script src="../static/js/cart.js"></script>-->
     <script src="../static/js/utils.js"></script>
     <script src="../static/js/products.js"></script>
 </body>
