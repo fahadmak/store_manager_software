@@ -18,9 +18,10 @@ let myInit = {
 };
 
 
-const product_url = 'http://127.0.0.1:5000/api/v1/products';
-const myRequest = new Request(product_url, myInit);
+
 function allproducts() {
+    const product_url = 'http://127.0.0.1:5000/api/v1/products';
+    const myRequest = new Request(product_url, myInit);
     fetch(myRequest)
     .then(handleResponse)
     .then((data) => {
@@ -647,3 +648,152 @@ function user_records() {
     });
 }
 
+function allcategories() {
+    const category_url = 'http://127.0.0.1:5000/api/v1/categories';
+    const myRequest = new Request(category_url, myInit);
+    fetch(myRequest)
+    .then(handleResponse)
+    .then((data) => {
+        let output = '';
+        data.categories.forEach(function (category) {
+            output += '<ul class="product-columns product-row" id="item' + category.categoryId + '">\n' +
+                '<li class="column columnone" id="id' + category.categoryId + '">' + category.categoryId + '</li>\n' +
+                '<li class="column columntwo" id="name' + category.categoryId + '">' + category.name + '</li>\n' +
+                '<li class="column columnthree" id="price' + category.categoryId + '">' + "" + '</li>\n' +
+                '<li class="column columnfour" id="qty' + category.categoryId + '">\n' +
+                '' + "" +
+                '</li>\n' +
+                '<li class="column columnfive pos">\n' +
+                '<button id ="pdt' + category.categoryId + '" class="btn st mod" onclick="category_modify()">Modify</button>\n' +
+                '<button id="' + category.categoryId + '" class="btn st del" onclick="category_delete()">Delete</button>\n' +
+                '</li>\n' +
+                '</ul>';
+        });
+        table.innerHTML = output
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
+
+
+function categorybox() {
+    document.getElementById('add-category').style.display = "block";
+}
+
+
+function addcategory() {
+    let acerrortext = document.getElementById('acerrortext');
+    let name = document.getElementById('cname').value;
+    let addInit = {
+        method: 'POST',
+        headers: myHeaders,
+        cache: 'default',
+        mode: 'cors',
+        body:JSON.stringify({category_name:name})
+    };
+    let category_url = 'http://127.0.0.1:5000/api/v1/categories';
+    const addRequest = new Request(category_url, addInit);
+    fetch(addRequest)
+    .then(handleResponse)
+    .then((data) => {
+        window.location.reload();
+        console.log(data);
+        return 'product' + data.name + ' has been added';
+    })
+    .catch(function (error) {
+        console.log(error.error);
+        if (error.error){
+            console.log(error.error);
+            acerrortext.style.display = 'block';
+            acerrortext.innerText= 'category name should contain at least letters or a number';
+            setTimeout(function () {
+            acerrortext.style.display = 'none'
+            }, 5000)
+        }
+
+    });
+
+}
+
+
+function category_delete() {
+    let del = document.getElementsByClassName('del');
+    for(let i = 0; i < del.length; i++){
+        del[i].onclick = function () {
+            if(confirm('Are You Want To Delete?')){
+                let delete_url = 'http://127.0.0.1:5000/api/v1/categories/' + this.id;
+                const myRequest = new Request(delete_url, delInit);
+                fetch(myRequest)
+                .then(handleResponse)
+                .then((data) => {
+                    let name = this.parentNode.parentNode.children[1].innerHTML;
+                    this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+                    alert('You have succesfully deleted ' + name);
+                    console.log(data)
+                })
+                .catch(function (error) {
+                console.log(error);
+                });
+            }
+        }
+
+    }
+}
+
+
+function category_modify() {
+    let modify = document.getElementById('modify');
+    let div = document.getElementsByClassName('mod');
+    let i;
+    for (i = 0; i < div.length; i++) {
+        div[i].onclick = function () {
+            console.log(this.parentNode.parentNode.id);
+            let ul = document.getElementById(this.parentNode.parentNode.id);
+            console.log(ul);
+            let kids = ul.children;
+            console.log(kids[0]);
+            document.getElementById('qb').innerText = kids[0].innerHTML;
+            document.getElementById('catname').value = kids[1].innerHTML;
+            modify.style.display = "block";
+        }
+    }
+}
+
+
+
+function category_edit() {
+    let pname = document.getElementById('catname').value;
+    let modInit = {
+        method: 'PUT',
+        headers: myHeaders,
+        cache: 'default',
+        mode: 'cors',
+        body:JSON.stringify({category_name:pname})
+    };
+    let modId = document.getElementById('qb').innerText;
+    for (let li of document.querySelectorAll('li')) {
+        if (modId === li.innerText) {
+            let ul = document.getElementById(li.parentNode.id);
+            let modify_url = 'http://127.0.0.1:5000/api/v1/categories/' + parseInt(modId);
+            const myRequest = new Request(modify_url, modInit);
+            fetch(myRequest)
+            .then(handleResponse)
+            .then((data) => {
+                console.log(data);
+                window.location.reload();
+            })
+            .catch(function (error) {
+                if (error){
+                    console.log(error);
+                    nerrortext.style.display = 'block';
+                    nerrortext.innerText= 'product name should contain at least letters or a number';
+                    setTimeout(function () {
+                    nerrortext.style.display = 'none'
+                    }, 5000)
+                }
+            })
+        }
+
+    }
+}
