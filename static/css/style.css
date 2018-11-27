@@ -137,6 +137,10 @@ div#niv {
 	color: yellow;
 	font-weight: bolder;
 }
+.mactive {
+	color: yellow;
+	font-weight: bolder;
+}
 .nav-item {
     padding: 12px 0px;
     width: 187px;
@@ -405,6 +409,9 @@ li.pitem {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 188, 212, 0.14);
+}
+#add-category{
+    display: none;
 }
 span#exit {
     position: relative;
