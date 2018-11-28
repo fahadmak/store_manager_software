@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Products | The Shopping Cart (Admin)</title>
+    <title>Categories | The Shopping Cart (Admin)</title>
     <link rel="stylesheet" href=../static/css/style.css>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body onload="allproducts()">
+<body onload="allcategories()">
     <div class="wrapper">
         <div class="row" id="niv">
             <div class="col-12">
@@ -20,8 +20,8 @@
                     <ul class="main-nav" id="nav-menu">
                         <li><a class="links" href="staff.html">Staff</a></li>
                         <li><a class="links" href="records.html">Records</a></li>
-                        <li><a class="links" href="categories.html">Categories</a></li>
-                        <li ><a class="links" href="#" >Products</a></li>
+                        <li><a class="links" href="#">Categories</a></li>
+                        <li ><a class="links" href="products.html" >Products</a></li>
                         <li><a class="links" href="../index.html" style="color: red">Logout</a></li>
                     </ul>
                 </nav>
@@ -32,30 +32,17 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <div id="add" class="content">
+                <div id="add-category" class="content">
 
                   <!-- Add Box -->
                     <div class="form-xtics">
                         <span id="close">&times;</span>
                         <div class="cr2">
                             <p id="acerrortext" class="stc"></p>
-                            <select id="all-cats" class="categories">
-                            </select>
-                        </div>
-                        <div class="cr2">
-                            <p id="anerrortext" class="stc"></p>
-                            <input type="text" id="aname" placeholder="Name of Product" class="first">
-                        </div>
-                        <div class="cr2">
-                            <p id="aperrortext" class="stc"></p>
-                            <input type="text" id="aprice" placeholder="Price of Product" class="first" required>
-                        </div>
-                        <div class="cr2">
-                            <p id="aqerrortext" class="stc"></p>
-                            <input type="text" id="aquantity" placeholder="Quantity" class="first" required>
+                            <input type="text" id="cname" placeholder="Category Name" class="first">
                         </div>
                         <div>
-                            <button class="btn" id ="add-pdt" style="position: relative;left: 0;" onclick="addproduct()">Add Product</button>
+                            <button class="btn" id ="add-pdt" style="position: relative;left: 0;" onclick="addcategory()">Add Category</button>
                         </div>
                   </div>
 
@@ -65,7 +52,7 @@
 
         <div class="row">
             <div class="col-12">
-                <div id="modifier" class="content">
+                <div id="modify" class="content">
 
                   <!-- Modify Box -->
                   <div class="form-xtics">
@@ -73,17 +60,9 @@
                     <span style="display: none" id="qb"></span>
                     <div class="cr2">
                         <p id="nerrortext" class="stc"></p>
-                        <input type="text" id="pname" placeholder="Name of Product" class="first">
+                        <input type="text" id="catname" placeholder="Name of Category" class="first">
                     </div>
-                    <div class="cr2">
-                        <p id="perrortext" class="stc"></p>
-                        <input type="text" id="pprice" placeholder="Price of Product" class="first" required>
-                    </div>
-                    <div class="cr2">
-                        <p id="qerrortext" class="stc"></p>
-                        <input type="text" id="pquantity" placeholder="Quantity" class="first" required>
-                    </div>
-                    <div><button class="btn" onclick="edit()">Modify</button></div>
+                    <div><button class="btn" onclick="category_edit()">Modify</button></div>
                   </div>
 
                 </div>
@@ -92,19 +71,19 @@
         <div class="row">
             <div class="col-12">
 
-                <!--Table with all Products-->
+                <!--Table with all Categories-->
 
                 <div class="available" id= 'display' style="padding-top: 17px;">
                     <div class="srch">
-                        <h3 style="padding-bottom: 13px;">Available Products</h3>
-                        <button id ="add-btn" class="btn st mod" onclick="makeproduct()">Add Product</button>
+                        <h3 style="padding-bottom: 13px;">Available Categories</h3>
+                        <button id ="add-cat" class="btn st mod" onclick="categorybox()">Add Categories</button>
                         <input type="text" id="search" onkeyup="searching()" placeholder="Enter Name">
                     </div>
                     <ul class="product-columns">
                         <li class="column columnone">Id No.</li>
-                        <li class="column columntwo">Product Name</li>
-                        <li class="column columnthree">Price</li>
-                        <li class="column columnfour">Quantity</li>
+                        <li class="column columntwo">Categories Name</li>
+                        <li class="column columnthree"></li>
+                        <li class="column columnfour"></li>
                         <li class="column columnfive"></li>
                     </ul>
                     <div class="product-table" id="table">
@@ -124,11 +103,11 @@
 
         var span = document.getElementById('exit');
         span.onclick = function () {
-            modifier.style.display = 'none';
+            document.getElementById('modify').style.display = 'none';
         };
         var span1 = document.getElementById('close');
         span1.onclick = function () {
-            add.style.display = 'none';
+            document.getElementById('add-category').style.display = 'none';
         };
 
 

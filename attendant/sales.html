@@ -7,7 +7,7 @@
     <link rel="stylesheet" href=../static/css/fontawesome.css>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body onload="single_user_records()">
     <div class="wrapper">
         <div class="row" id="niv">
             <div class="col-12">
@@ -31,72 +31,30 @@
             </div>
         </div>
 
+
+
             <!--End of Side Navigation-->
 
         <div class="row">
             <div class="col-12">
-                <div class="info" style="display: block" id="info1">
-                                <div class="available" style="padding-top: 28px;">
-                                    <h3 style="padding-bottom: 13px;">Sales Record on 12/21/2090</h3>
-                                    <div class="product-table">
-                                        <ul class="product-columns">
-                                            <li class="column columnone">Id No.</li>
-                                            <li class="column columntwo">Product Name</li>
-                                            <li class="column columnthree">Price</li>
-                                            <li class="column columnfour">Quantity</li>
-                                            <li class="column columnfive">Total</li>
-                                        </ul>
-                                        <ul class="cart-items">
-                                            <li class="column columnone">1</li>
-                                            <li class="column columntwo">Milk</li>
-                                            <li class="column columnthree">2000 UGX</li>
-                                            <li class="column columnfour">12</li>
-                                            <li class="column columnfive">24000</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="available" style="padding-top: 28px;">
-                                    <h3 style="padding-bottom: 13px;">Sales Record on 12/21/2090</h3>
-                                    <div class="product-table">
-                                        <ul class="product-columns">
-                                            <li class="column columnone">Id No.</li>
-                                            <li class="column columntwo">Product Name</li>
-                                            <li class="column columnthree">Price</li>
-                                            <li class="column columnfour">Quantity</li>
-                                            <li class="column columnfive">Total</li>
-                                        </ul>
-                                        <ul class="cart-items">
-                                            <li class="column columnone">3</li>
-                                            <li class="column columntwo">Chips</li>
-                                            <li class="column columnthree">2000 UGX</li>
-                                            <li class="column columnfour">12</li>
-                                            <li class="column columnfive">24000</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="available" style="padding-top: 28px;">
-                                    <h3 style="padding-bottom: 13px;">Sales Record on 12/21/2090</h3>
-                                    <div class="product-table">
-                                        <ul class="product-columns">
-                                            <li class="column columnone">Id No.</li>
-                                            <li class="column columntwo">Product Name</li>
-                                            <li class="column columnthree">Price</li>
-                                            <li class="column columnfour">Quantity</li>
-                                            <li class="column columnfive">Total</li>
-                                        </ul>
-                                        <ul class="cart-items">
-                                            <li class="column columnone">3</li>
-                                            <li class="column columntwo">Cool Bar</li>
-                                            <li class="column columnthree">2000 UGX</li>
-                                            <li class="column columnfour">12</li>
-                                            <li class="column columnfive">24000</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="available" style="padding-top: 28px;">
+                        <h3 style="padding-bottom: 13px;">sales-record</h3>
+                        <div class="product-table">
+                            <ul class="product-columns">
+                                <li class="column columnone">Sale ID No.</li>
+                                <li class="column columntwo">Date</li>
+                                <li class="column columnthree"></li>
+                                <li class="column columnfour">Total</li>
+                                <li class="column columnfive"></li>
+                            </ul>
+                            <div class="cart-items" id="record"></div>
+
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
-    <script src="../static/js/mobile.js"></script>
+    <script src="../static/js/utils.js"></script>
+    <script src="../static/js/products.js"></script>
 </body>
 </html>

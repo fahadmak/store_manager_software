@@ -137,6 +137,10 @@ div#niv {
 	color: yellow;
 	font-weight: bolder;
 }
+.mactive {
+	color: yellow;
+	font-weight: bolder;
+}
 .nav-item {
     padding: 12px 0px;
     width: 187px;
@@ -237,6 +241,11 @@ ul.cart-items {
     list-style: none;
     display: flex;
     padding: 15px;
+}
+.btn-layout{
+    position: relative;
+    bottom: 5px;
+    display: flex;
 }
 .product-table {
 	text-align: center;
@@ -343,7 +352,7 @@ input.apple-switch:checked {
     border: 1px solid #03A9F4;
     width: 80%;
 }
-.qty {
+.msn {
 	width: 57px;
 	height: 31px;
 	padding: 3px;
@@ -400,6 +409,9 @@ li.pitem {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 188, 212, 0.14);
+}
+#add-category{
+    display: none;
 }
 span#exit {
     position: relative;
