@@ -19,15 +19,12 @@ function login() {
     })
     .then(handleResponse)
     .then((data) => {
+        localStorage.setItem('token', data.access_token);
+        localStorage.setItem('user_id', data.user_id);
+        console.log(localStorage.getItem('token'));
         if (data.admin === true){
-            localStorage.setItem('token', data.access_token);
-            localStorage.setItem('user_id', data.user_id);
-            console.log(localStorage.getItem('token'));
             location.href = './admin/products.html';
         } else {
-            localStorage.setItem('token', data.access_token);
-            localStorage.setItem('user_id', data.user_id);
-            console.log(localStorage.getItem('token'));
             location.href = 'attendant/shopping_cart.html';
         }})
     .catch(function (error) {
