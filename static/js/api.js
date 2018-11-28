@@ -19,13 +19,16 @@ function login() {
     })
     .then(handleResponse)
     .then((data) => {
-        localStorage.setItem('token', data.access_token);
-        localStorage.setItem('user_id', data.user_id);
-        console.log(localStorage.getItem('token'));
         if (data.admin === true){
-            location.href = './admin/products.html';
+            localStorage.setItem('token', data.access_token);
+            localStorage.setItem('user_id', data.user_id);
+            console.log(data);
+            load('./admin/products.html');
         } else {
-            location.href = 'attendant/shopping_cart.html';
+            localStorage.setItem('token', data.access_token);
+            localStorage.setItem('user_id', data.user_id);
+            console.log(localStorage.getItem('token'));
+            load('attendant/shopping_cart.html');
         }})
     .catch(function (error) {
         if (error.error === 'Username and password did not match'){
