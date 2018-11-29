@@ -1,4 +1,4 @@
-const login_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/auth/login';
+const login_url = 'http://127.0.0.1:5000/api/v1/auth/login';
 
 let merrortext = document.querySelector('#merrortext');
 let uerrortext = document.querySelector('#uerrortext');
@@ -22,13 +22,14 @@ function login() {
         if (data.admin === true){
             localStorage.setItem('token', data.access_token);
             localStorage.setItem('user_id', data.user_id);
-            console.log(data);
-            load('./admin/products.html');
+            login_p.action = 'admin/products.html';
+            login_p.submit();
+
         } else {
             localStorage.setItem('token', data.access_token);
             localStorage.setItem('user_id', data.user_id);
-            console.log(localStorage.getItem('token'));
-            load('attendant/shopping_cart.html');
+            login_p.action = 'attendant/shopping_cart.html';
+            login_p.submit();
         }})
     .catch(function (error) {
         if (error.error === 'Username and password did not match'){
