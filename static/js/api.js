@@ -58,5 +58,5 @@ function login() {
 }
 
 function load(url) {
-    location.href = url;
+    window.location.href = url;
 }
