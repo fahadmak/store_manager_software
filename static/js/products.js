@@ -18,10 +18,9 @@ let myInit = {
 };
 
 
-
+const product_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/products';
+const myRequest = new Request(product_url, myInit);
 function allproducts() {
-    const product_url = 'http://127.0.0.1:5000/api/v1/products';
-    const myRequest = new Request(product_url, myInit);
     fetch(myRequest)
     .then(handleResponse)
     .then((data) => {
@@ -60,7 +59,7 @@ function pdel() {
     for(i = 0; i < del.length; i++){
         del[i].onclick = function () {
             if(confirm('Are You Want To Delete?')){
-                let delete_url = 'http://127.0.0.1:5000/api/v1/products/' + this.id;
+                let delete_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/products/' + this.id;
                 const myRequest = new Request(delete_url, delInit);
                 fetch(myRequest)
                 .then(handleResponse)
@@ -115,7 +114,7 @@ function edit() {
     for (let li of document.querySelectorAll('li')) {
         if (modId === li.innerText) {
             let ul = document.getElementById(li.parentNode.id);
-            let modify_url = 'http://127.0.0.1:5000/api/v1/products/' + parseInt(modId);
+            let modify_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/products/' + parseInt(modId);
             const myRequest = new Request(modify_url, modInit);
             fetch(myRequest)
             .then(handleResponse)
@@ -156,7 +155,7 @@ function edit() {
 
 document.getElementById('add-btn').addEventListener('click', makeproduct);
 
-const category_url = 'http://127.0.0.1:5000/api/v1/categories';
+const category_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/categories';
 
 const catRequest = new Request(category_url, myInit);
 cats = document.getElementById('all-cats');
@@ -198,7 +197,7 @@ function addproduct() {
         mode: 'cors',
         body:JSON.stringify({category_id: category_id, name:aname, price:aprice, quantity:aquantity})
     };
-    let add_url = 'http://127.0.0.1:5000/api/v1/products';
+    let add_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/products';
     const addRequest = new Request(add_url, addInit);
     fetch(addRequest)
     .then(handleResponse)
@@ -252,7 +251,7 @@ function allusers() {
         cache: 'default',
         mode: 'cors'
     };
-    const users_url = 'http://127.0.0.1:5000/api/v1/auth/users';
+    const users_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/auth/users';
     const userRequest = new Request(users_url, userInit);
     fetch(userRequest)
     .then(handleResponse)
@@ -317,7 +316,7 @@ function adduser() {
         mode: 'cors',
         body:JSON.stringify({name:name, username:username, password:password})
     };
-    let add_url = 'http://127.0.0.1:5000/api/v1/auth/signup';
+    let add_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/auth/signup';
     const addRequest = new Request(add_url, addInit);
     fetch(addRequest)
     .then(handleResponse)
@@ -374,7 +373,7 @@ function udel() {
                 return false
             }
             if(confirm('Are You Want To Delete?')){
-                let delete_url = 'http://127.0.0.1:5000/api/v1/auth/users/' + this.id;
+                let delete_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/auth/users/' + this.id;
                 const myRequest = new Request(delete_url, delInit);
                 fetch(myRequest)
                 .then(handleResponse)
@@ -408,7 +407,7 @@ function promote() {
             }
             if(confirm('Are You Sure Want To Promote the User?')){
                 let url_id = this.id.replace(/[^\d.]/g,'');
-                let promote_url = 'http://127.0.0.1:5000/api/v1/auth/promote/' + url_id;
+                let promote_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/auth/promote/' + url_id;
                 let admin_status;
                 let message;
                 if (this.checked){
@@ -547,7 +546,7 @@ function createRecord() {
         mode: 'cors',
         body:JSON.stringify({cart: JSON.parse(localStorage.getItem('pdtsinfo'))})
     };
-    let sale_url = 'http://127.0.0.1:5000/api/v1/sales';
+    let sale_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/sales';
     const addRequest = new Request(sale_url, saleInit);
     fetch(addRequest)
     .then(handleResponse)
@@ -584,7 +583,7 @@ function item_delete() {
 }
 
 function single_user(user_id) {
-    let user_url = 'http://127.0.0.1:5000/api/v1/users/' + user_id;
+    let user_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/users/' + user_id;
     const userRequest = new Request(user_url, myInit);
     let name;
     fetch(userRequest)
@@ -601,7 +600,7 @@ function single_user(user_id) {
 
 
 function single_user_records() {
-    let sales_url = 'http://127.0.0.1:5000/api/v1/sales/' + localStorage.getItem('user_id');
+    let sales_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/sales/' + localStorage.getItem('user_id');
     const saleRequest = new Request(sales_url, myInit);
     let output;
     fetch(saleRequest)
@@ -625,7 +624,7 @@ function single_user_records() {
 }
 
 function user_records() {
-    let all_sales_url = 'http://127.0.0.1:5000/api/v1/sales';
+    let all_sales_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/sales';
     const allSaleRequest = new Request(all_sales_url, myInit);
     let output;
     fetch(allSaleRequest)
@@ -648,152 +647,3 @@ function user_records() {
     });
 }
 
-function allcategories() {
-    const category_url = 'http://127.0.0.1:5000/api/v1/categories';
-    const myRequest = new Request(category_url, myInit);
-    fetch(myRequest)
-    .then(handleResponse)
-    .then((data) => {
-        let output = '';
-        data.categories.forEach(function (category) {
-            output += '<ul class="product-columns product-row" id="item' + category.categoryId + '">\n' +
-                '<li class="column columnone" id="id' + category.categoryId + '">' + category.categoryId + '</li>\n' +
-                '<li class="column columntwo" id="name' + category.categoryId + '">' + category.name + '</li>\n' +
-                '<li class="column columnthree" id="price' + category.categoryId + '">' + "" + '</li>\n' +
-                '<li class="column columnfour" id="qty' + category.categoryId + '">\n' +
-                '' + "" +
-                '</li>\n' +
-                '<li class="column columnfive pos">\n' +
-                '<button id ="pdt' + category.categoryId + '" class="btn st mod" onclick="category_modify()">Modify</button>\n' +
-                '<button id="' + category.categoryId + '" class="btn st del" onclick="category_delete()">Delete</button>\n' +
-                '</li>\n' +
-                '</ul>';
-        });
-        table.innerHTML = output
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
-}
-
-
-function categorybox() {
-    document.getElementById('add-category').style.display = "block";
-}
-
-
-function addcategory() {
-    let acerrortext = document.getElementById('acerrortext');
-    let name = document.getElementById('cname').value;
-    let addInit = {
-        method: 'POST',
-        headers: myHeaders,
-        cache: 'default',
-        mode: 'cors',
-        body:JSON.stringify({category_name:name})
-    };
-    let category_url = 'http://127.0.0.1:5000/api/v1/categories';
-    const addRequest = new Request(category_url, addInit);
-    fetch(addRequest)
-    .then(handleResponse)
-    .then((data) => {
-        window.location.reload();
-        console.log(data);
-        return 'product' + data.name + ' has been added';
-    })
-    .catch(function (error) {
-        console.log(error.error);
-        if (error.error){
-            console.log(error.error);
-            acerrortext.style.display = 'block';
-            acerrortext.innerText= 'category name should contain at least letters or a number';
-            setTimeout(function () {
-            acerrortext.style.display = 'none'
-            }, 5000)
-        }
-
-    });
-
-}
-
-
-function category_delete() {
-    let del = document.getElementsByClassName('del');
-    for(let i = 0; i < del.length; i++){
-        del[i].onclick = function () {
-            if(confirm('Are You Want To Delete?')){
-                let delete_url = 'http://127.0.0.1:5000/api/v1/categories/' + this.id;
-                const myRequest = new Request(delete_url, delInit);
-                fetch(myRequest)
-                .then(handleResponse)
-                .then((data) => {
-                    let name = this.parentNode.parentNode.children[1].innerHTML;
-                    this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
-                    alert('You have succesfully deleted ' + name);
-                    console.log(data)
-                })
-                .catch(function (error) {
-                console.log(error);
-                });
-            }
-        }
-
-    }
-}
-
-
-function category_modify() {
-    let modify = document.getElementById('modify');
-    let div = document.getElementsByClassName('mod');
-    let i;
-    for (i = 0; i < div.length; i++) {
-        div[i].onclick = function () {
-            console.log(this.parentNode.parentNode.id);
-            let ul = document.getElementById(this.parentNode.parentNode.id);
-            console.log(ul);
-            let kids = ul.children;
-            console.log(kids[0]);
-            document.getElementById('qb').innerText = kids[0].innerHTML;
-            document.getElementById('catname').value = kids[1].innerHTML;
-            modify.style.display = "block";
-        }
-    }
-}
-
-
-
-function category_edit() {
-    let pname = document.getElementById('catname').value;
-    let modInit = {
-        method: 'PUT',
-        headers: myHeaders,
-        cache: 'default',
-        mode: 'cors',
-        body:JSON.stringify({category_name:pname})
-    };
-    let modId = document.getElementById('qb').innerText;
-    for (let li of document.querySelectorAll('li')) {
-        if (modId === li.innerText) {
-            let ul = document.getElementById(li.parentNode.id);
-            let modify_url = 'http://127.0.0.1:5000/api/v1/categories/' + parseInt(modId);
-            const myRequest = new Request(modify_url, modInit);
-            fetch(myRequest)
-            .then(handleResponse)
-            .then((data) => {
-                console.log(data);
-                window.location.reload();
-            })
-            .catch(function (error) {
-                if (error){
-                    console.log(error);
-                    nerrortext.style.display = 'block';
-                    nerrortext.innerText= 'product name should contain at least letters or a number';
-                    setTimeout(function () {
-                    nerrortext.style.display = 'none'
-                    }, 5000)
-                }
-            })
-        }
-
-    }
-}
