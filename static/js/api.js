@@ -22,13 +22,14 @@ function login() {
         if (data.admin === true){
             localStorage.setItem('token', data.access_token);
             localStorage.setItem('user_id', data.user_id);
-            console.log(localStorage.getItem('token'));
-            location.href = './admin/products.html';
+            login_p.action = 'admin/products.html';
+            login_p.submit();
+
         } else {
             localStorage.setItem('token', data.access_token);
             localStorage.setItem('user_id', data.user_id);
-            console.log(localStorage.getItem('token'));
-            location.href = 'attendant/shopping_cart.html';
+            login_p.action = 'attendant/shopping_cart.html';
+            login_p.submit();
         }})
     .catch(function (error) {
         if (error.error === 'Username and password did not match'){
@@ -58,5 +59,5 @@ function login() {
 }
 
 function load(url) {
-    location.href = url;
+    window.location.href = url;
 }
