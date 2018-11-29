@@ -18,10 +18,10 @@ let myInit = {
 };
 
 
-
+const product_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/products';
+const myRequest = new Request(product_url, myInit);
 function allproducts() {
-    const product_url = 'https://store-challenge-3-api.herokuapp.com/api/v1/products';
-    const myRequest = new Request(product_url, myInit);
+    
     fetch(myRequest)
     .then(handleResponse)
     .then((data) => {
