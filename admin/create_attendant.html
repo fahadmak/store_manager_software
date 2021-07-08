@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Attendant | The Shopping Cart (Admin)</title>
+    <link rel="stylesheet" href=../css/style.css>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="row" id="niv">
+            <div class="col-12">
+
+                <!--Side Navigation-->
+
+
+                <nav class="bar">
+                    <span class="nav-toggle" id="js-toggle">
+                        <img class="mobile" src="../images/bars.svg">
+                    </span>
+                    <a href="../attendant/shopping_cart.html" class="logo font">SM</a>
+                    <ul class="main-nav" id="nav-menu">
+                        <li ><a class="links" href="#" >Create Staff</a></li>
+                        <li><a class="links" href="view_all_records.html">Records</a></li>
+                        <li><a class="links" href="view_all_records.html">Products</a></li>
+                        <li><a class="links" href="../index.html" style="color: red">Logout</a></li>
+                    </ul>
+                </nav>
+
+                <!--Side Navigation-->
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p id="success"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2 class="welcome" id="wel">Create Sales Attendant</h2>
+                <form class="sign" id="sp" action="#" onsubmit="required()">
+                    <div class="box-section">
+                        <div class="form-section">
+                            <label class="holder">First Name</label>
+                            <br>
+                            <input type="text" id="fname" class="first" placeholder="First Name" required>
+                        </div>
+                        <div class="form-section last">
+                            <label class="holder">Last Name</label>
+                            <br>
+                            <input type="text" id="lname" class="first" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="box-section">
+                        <div class="form-section">
+                            <label class="holder">Date of Birth</label>
+                            <br>
+                            <input type="date" class="first" placeholder="Date of Birth" required>
+                        </div>
+                        <div class="form-section last">
+                            <label class="holder">Home Address</label>
+                            <br>
+                            <input type="text" class="first" placeholder="Home Address" required>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="box-section">
+                        <div class="form-section">
+                            <label class="holder">User Name</label>
+                            <br>
+                            <input type="text" id='uname' class="first" placeholder="User Name" required>
+                        </div>
+                        <div class="form-section last">
+                            <label class="holder">Email</label>
+                            <br>
+                            <input type="email" class="first" placeholder="you@example.org" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="box-section">
+                        <div class="form-section">
+                            <label class="holder">Password</label>
+                            <br>
+                            <input type="password" id="password" placeholder="********" class="first" required>
+                        </div>
+                        <div class="form-section last">
+                            <label class="holder"> Confirm Password</label>
+                            <br>
+                            <input type="password" id="confirm_password" placeholder="********" class="first" required>
+                        </div>
+                    </div>
+                    <br>
+                    <input class="sb" type="submit" id="submit-button" name="submit-button" value="Create Attn">
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../js/mobile.js"></script>
+    <script>
+        var fname = document.getElementById('uname');
+        var wel = document.getElementById('wel');
+        var form = document.getElementById('sp');
+        var msg = document.getElementById('success');
+        var btn = document.getElementById('submit-button');
+        btn.onclick = function () {
+            wel.style.display = 'none';
+            form.style.display = 'none';
+            msg.innerHTML = fname.value.toUpperCase() + '\xa0\xa0has been created\xa0\xa0' +
+                '<a href="view_all_records.html">Go to View Records</a>' ;
+            msg.style.display = 'block';
+        };
+    </script>
+</body>
+</html>

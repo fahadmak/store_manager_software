@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Store | Login Page</title>
+    <link rel="stylesheet" href=css/style.css>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="wrapper">
+    <div class="row">
+        <div class="col-12">
+            <div class="log">
+                <img class="locate" src="images/logo.png">
+                <div class="login">
+                    <p id="merrortext" class="stl"></p>
+                    <form class="sign" action="#">
+                        <div class="box-section">
+                            <div class="form-section">
+                                <p id="uerrortext" class="stl"></p>
+                                <input type="text" class="first" id="username" placeholder="User Name" required>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="box-section">
+                            <div class="form-section">
+                                <p id="perrortext" class="stl"></p>
+                                <input type="password" id="password" placeholder="Password" class="first" required>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="login-btns">
+                            <input class="sb size" type="submit" id="logs" name="submit-button" value="Login">
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+</body>
+</html>

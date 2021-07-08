@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View All Sale Records | The Shopping Cart (Admin)</title>
+    <link rel="stylesheet" href=../css/style.css>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="row" id="niv">
+            <div class="col-12">
+
+                <!--Top Bar Navigation-->
+
+
+                <nav class="bar">
+                    <span class="nav-toggle" id="js-toggle">
+                        <img class="mobile" src="../images/bars.svg">
+                    </span>
+                    <a href="../attendant/shopping_cart.html" class="logo font">SM</a>
+                    <ul class="main-nav" id="nav-menu">
+                        <li ><a class="links" href="create_attendant.html" >Create Staff</a></li>
+                        <li><a class="links" href="#">Records</a></li>
+                        <li><a class="links" href="view_all_records.html">Products</a></li>
+                        <li><a class="links" href="../index.html" style="color: red">Logout</a></li>
+                    </ul>
+                </nav>
+
+                <!--Top Bar Navigation-->
+
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-12">
+                    <div class="available" id= 'display' style="padding-top: 17px;">
+                        <div class="srch">
+                            <h3 style="padding-bottom: 13px;">All Sales Record By Attendants</h3>
+                            <input type="text" id="search" onkeyup="find()" placeholder="Enter Attendants Name">
+                        </div>
+                        <div id="attn1" class="infobox">
+                            <ul class="attendant">
+                                <li class="column">Agnes Katumba</li>
+                            </ul>
+                            <div class="info" id="info1">
+                                <div class="available" style="padding-top: 28px;">
+                                    <h3 style="padding-bottom: 13px;">Sales Record on 12/21/2090</h3>
+                                    <div class="product-table">
+                                        <ul class="product-columns">
+                                            <li class="column columnone">Id No.</li>
+                                            <li class="column columntwo">Product Name</li>
+                                            <li class="column columnthree">Price</li>
+                                            <li class="column columnfour">Quantity</li>
+                                            <li class="column columnfive">Total</li>
+                                        </ul>
+                                        <ul class="cart-items">
+                                            <li class="column columnone">1</li>
+                                            <li class="column columntwo">Milk</li>
+                                            <li class="column columnthree">2000 UGX</li>
+                                            <li class="column columnfour">12</li>
+                                            <li class="column columnfive">24000</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="available" style="padding-top: 28px;">
+                                    <h3 style="padding-bottom: 13px;">Sales Record on 12/21/2090</h3>
+                                    <div class="product-table">
+                                        <ul class="product-columns">
+                                            <li class="column columnone">Id No.</li>
+                                            <li class="column columntwo">Product Name</li>
+                                            <li class="column columnthree">Price</li>
+                                            <li class="column columnfour">Quantity</li>
+                                            <li class="column columnfive">Total</li>
+                                        </ul>
+                                        <ul class="cart-items">
+                                            <li class="column columnone">3</li>
+                                            <li class="column columntwo">Chips</li>
+                                            <li class="column columnthree">2000 UGX</li>
+                                            <li class="column columnfour">12</li>
+                                            <li class="column columnfive">24000</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="available" style="padding-top: 28px;">
+                                    <h3 style="padding-bottom: 13px;">Sales Record on 12/21/2090</h3>
+                                    <div class="product-table">
+                                        <ul class="product-columns">
+                                            <li class="column columnone">Id No.</li>
+                                            <li class="column columntwo">Product Name</li>
+                                            <li class="column columnthree">Price</li>
+                                            <li class="column columnfour">Quantity</li>
+                                            <li class="column columnfive">Total</li>
+                                        </ul>
+                                        <ul class="cart-items">
+                                            <li class="column columnone">3</li>
+                                            <li class="column columntwo">Cool Bar</li>
+                                            <li class="column columnthree">2000 UGX</li>
+                                            <li class="column columnfour">12</li>
+                                            <li class="column columnfive">24000</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="attn2" class="infobox">
+                            <ul class="attendant">
+                                <li class="column">Fahad Makabugo</li>
+                            </ul>
+                            <div class="info" id="info2">
+                                <div class="available" style="padding-top: 28px;">
+                                    <h3 style="padding-bottom: 13px;">Sales Record on 12/21/2090</h3>
+                                    <div class="product-table">
+                                        <ul class="product-columns">
+                                            <li class="column columnone">Id No.</li>
+                                            <li class="column columntwo">Product Name</li>
+                                            <li class="column columnthree">Price</li>
+                                            <li class="column columnfour">Quantity</li>
+                                            <li class="column columnfive">Total</li>
+                                        </ul>
+                                        <ul class="cart-items">
+                                            <li class="column columnone">1</li>
+                                            <li class="column columntwo">Milk</li>
+                                            <li class="column columnthree">2000 UGX</li>
+                                            <li class="column columnfour">12</li>
+                                            <li class="column columnfive">24000</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="available" style="padding-top: 28px;">
+                                    <h3 style="padding-bottom: 13px;">Sales Record on 12/21/2090</h3>
+                                    <div class="product-table">
+                                        <ul class="product-columns">
+                                            <li class="column columnone">Id No.</li>
+                                            <li class="column columntwo">Product Name</li>
+                                            <li class="column columnthree">Price</li>
+                                            <li class="column columnfour">Quantity</li>
+                                            <li class="column columnfive">Total</li>
+                                        </ul>
+                                        <ul class="cart-items">
+                                            <li class="column columnone">3</li>
+                                            <li class="column columntwo">Chips</li>
+                                            <li class="column columnthree">2000 UGX</li>
+                                            <li class="column columnfour">12</li>
+                                            <li class="column columnfive">24000</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="available" style="padding-top: 28px;">
+                                    <h3 style="padding-bottom: 13px;">Sales Record on 12/21/2090</h3>
+                                    <div class="product-table">
+                                        <ul class="product-columns">
+                                            <li class="column columnone">Id No.</li>
+                                            <li class="column columntwo">Product Name</li>
+                                            <li class="column columnthree">Price</li>
+                                            <li class="column columnfour">Quantity</li>
+                                            <li class="column columnfive">Total</li>
+                                        </ul>
+                                        <ul class="cart-items">
+                                            <li class="column columnone">3</li>
+                                            <li class="column columntwo">Cool Bar</li>
+                                            <li class="column columnthree">2000 UGX</li>
+                                            <li class="column columnfour">12</li>
+                                            <li class="column columnfive">24000</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="attn3" class="infobox">
+                            <div class="column attendant">Federo KM</div>
+                            <div class="info" id="info3">
+                                <div class="available" style="padding-top: 28px;">
+                                    <h3 style="padding-bottom: 13px;">Sales Record on 12/21/2090</h3>
+                                    <div class="product-table">
+                                        <ul class="product-columns">
+                                            <li class="column columnone">Id No.</li>
+                                            <li class="column columntwo">Product Name</li>
+                                            <li class="column columnthree">Price</li>
+                                            <li class="column columnfour">Quantity</li>
+                                            <li class="column columnfive">Total</li>
+                                        </ul>
+                                        <ul class="cart-items">
+                                            <li class="column columnone">1</li>
+                                            <li class="column columntwo">Milk</li>
+                                            <li class="column columnthree">2000 UGX</li>
+                                            <li class="column columnfour">12</li>
+                                            <li class="column columnfive">24000</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="available" style="padding-top: 28px;">
+                                    <h3 style="padding-bottom: 13px;">Sales Record on 12/21/2090</h3>
+                                    <div class="product-table">
+                                        <ul class="product-columns">
+                                            <li class="column columnone">Id No.</li>
+                                            <li class="column columntwo">Product Name</li>
+                                            <li class="column columnthree">Price</li>
+                                            <li class="column columnfour">Quantity</li>
+                                            <li class="column columnfive">Total</li>
+                                        </ul>
+                                        <ul class="cart-items">
+                                            <li class="column columnone">3</li>
+                                            <li class="column columntwo">Chips</li>
+                                            <li class="column columnthree">2000 UGX</li>
+                                            <li class="column columnfour">12</li>
+                                            <li class="column columnfive">24000</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="available" style="padding-top: 28px;">
+                                    <h3 style="padding-bottom: 13px;">Sales Record on 12/21/2090</h3>
+                                    <div class="product-table">
+                                        <ul class="product-columns">
+                                            <li class="column columnone">Id No.</li>
+                                            <li class="column columntwo">Product Name</li>
+                                            <li class="column columnthree">Price</li>
+                                            <li class="column columnfour">Quantity</li>
+                                            <li class="column columnfive">Total</li>
+                                        </ul>
+                                        <ul class="cart-items">
+                                            <li class="column columnone">3</li>
+                                            <li class="column columntwo">Cool Bar</li>
+                                            <li class="column columnthree">2000 UGX</li>
+                                            <li class="column columnfour">12</li>
+                                            <li class="column columnfive">24000</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script src="../js/mobile.js"></script>
+<script>
+    // var modifier = document.getElementById('modifier');
+    var div = document.getElementsByClassName('infobox');
+    var i;
+    for(i = 0; i < div.length; i++){
+        div[i].onclick = function () {
+            if (document.getElementById(this.children[1].id).style.display === "block"){
+                document.getElementById(this.children[1].id).style.display = "none" ;
+            }
+            else {
+                document.getElementById(this.children[1].id).style.display = "block" ;
+            }
+        }
+
+    }
+    function find() {
+        var li, i;
+        var search = document.getElementById('search');
+        var filter = search.value.toUpperCase();
+
+        for (i = 0; i < div.length; i++) {
+            li = div[i].children[0];
+            console.log(li);
+            if (li.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                div[i].style.display = "";
+            } else {
+                div[i].style.display = "none";
+            }
+        }
+    }
+</script>
+</body>
+</html>

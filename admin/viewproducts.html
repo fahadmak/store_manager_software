@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products | The Shopping Cart (Admin)</title>
+    <link rel="stylesheet" href=../css/style.css>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="row" id="niv">
+            <div class="col-12">
+
+                <!--Top Bar Side Navigation-->
+                <nav class="bar">
+                    <span class="nav-toggle" id="js-toggle">
+                        <img class="mobile" src="../images/bars.svg">
+                    </span>
+                    <a href="../attendant/shopping_cart.html" class="logo font">SM</a>
+                    <ul class="main-nav" id="nav-menu">
+                        <li ><a class="links" href="create_attendant.html" >Create Staff</a></li>
+                        <li><a class="links" href="view_all_records.html">Records</a></li>
+                        <li><a class="links" href="#">Products</a></li>
+                        <li><a class="links" href="../index.html" style="color: red">Logout</a></li>
+                    </ul>
+                </nav>
+
+                <!--Top Bar Navigation-->
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="add" class="content">
+
+                  <!-- Modify Box -->
+                  <div class="form-xtics">
+                      <span id="close">&times;</span>
+                    <div class="cr2">
+                        <input type="text" id="aname" placeholder="Name of Product" class="first">
+                    </div>
+                    <div class="cr2">
+                        <input type="text" id="aprice" placeholder="Price of Product" class="first" required>
+                    </div>
+                    <div class="cr2">
+                        <input type="text" id="aquantity" placeholder="Quantity" class="first" required>
+                    </div>
+                    <div><button class="btn" style="position: relative;left: 0;" onclick="addproduct()">Modify</button></div>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div id="modifier" class="content">
+
+                  <!-- Modify Box -->
+                  <div class="form-xtics">
+                      <span id="exit">&times;</span>
+                    <span style="display: none" id="qb"></span>
+                    <div class="cr2">
+                        <input type="text" id="pname" placeholder="Name of Product" class="first">
+                    </div>
+                    <div class="cr2">
+                        <input type="text" id="pprice" placeholder="Price of Product" class="first" required>
+                    </div>
+                    <div class="cr2">
+                        <input type="text" id="pquantity" placeholder="Quantity" class="first" required>
+                    </div>
+                    <div><button class="btn" onclick="edit()">Modify</button></div>
+                  </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+
+                <!--Table with all Products-->
+
+                <div class="available" id= 'display' style="padding-top: 17px;">
+                    <div class="srch">
+                        <h3 style="padding-bottom: 13px;">Available Products</h3>
+                        <button id ="add-btn" class="btn st mod">Add Product</button>
+                        <input type="text" id="search" onkeyup="searching()" placeholder="Enter Product Name">
+                    </div>
+                    <ul class="product-columns">
+                        <li class="column columnone">Id No.</li>
+                        <li class="column columntwo">Product Name</li>
+                        <li class="column columnthree">Price</li>
+                        <li class="column columnfour">Quantity</li>
+                        <li class="column columnfive"></li>
+                    </ul>
+                    <div class="product-table" id="table">
+                        <ul class="product-columns product-row" id="item1">
+                            <li class="column columnone" id="id1">1</li>
+                            <li class="column columntwo" id="name1">Fish</li>
+                            <li class="column columnthree" id="price1">20000</li>
+                            <li class="column columnfour" id="qty1">
+                                500 units
+                            </li>
+                            <li class="column columnfive pos">
+                                <button id ="pdt1" class="btn st mod">Modify</button>
+                                <button class="btn st del">Delete</button>
+                            </li>
+                        </ul>
+                        <ul class="product-columns product-row" id="item2">
+                            <li class="column columnone" id="id2">2</li>
+                            <li class="column columntwo" id="name2">Beans</li>
+                            <li class="column columnthree" id="price2">20000</li>
+                            <li class="column columnfour" id="qty2">
+                                500 units
+                            </li>
+                            <li class="column columnfive pos">
+                                <button id ="pdt2" class="btn st mod">Modify</button>
+                                <button class="btn st del">Delete</button>
+                            </li>
+                        </ul>
+                        <ul class="product-columns product-row" id="item3">
+                            <li class="column columnone" id="id3">3</li>
+                            <li class="column columntwo" id="name3">Minced</li>
+                            <li class="column columnthree" id="price3">20000</li>
+                            <li class="column columnfour" id="qty3">
+                                500 units
+                            </li>
+                            <li class="column columnfive pos">
+                                <button id ="pdt3" class="btn st mod">Modify</button>
+                                <button class="btn st del">Delete</button>
+                            </li>
+                        </ul>
+                        <ul class="product-columns product-row" id="item4">
+                            <li class="column columnone" id="id4">4</li>
+                            <li class="column columntwo" id="name4">Fish</li>
+                            <li class="column columnthree" id="price4">20000</li>
+                            <li class="column columnfour" id="qty4">
+                                500 units
+                            </li>
+                            <li class="column columnfive pos">
+                                <button class="btn st mod">Modify</button>
+                                <button class="btn st del">Delete</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--End of Table with all Products-->
+
+            </div>
+        </div>
+    </div>
+    <script src="../js/mobile.js"></script>
+    <script src="../js/search.js"></script>
+    <script>
+        var modifier = document.getElementById('modifier');
+        var div = document.getElementsByClassName('mod');
+        var i;
+        for(i = 0; i < div.length; i++){
+            div[i].onclick = function () {
+                console.log(this.parentNode.parentNode.id);
+                var ul = document.getElementById(this.parentNode.parentNode.id);
+                console.log(ul);
+                var kids = ul.children;
+                console.log(kids[0]);
+                document.getElementById('qb').innerText = kids[0].innerHTML;
+                document.getElementById('pname').value = kids[1].innerHTML;
+                document.getElementById('pprice').value = kids[2].innerHTML;
+                document.getElementById('pquantity').value = kids[3].innerHTML;
+                modifier.style.display = "block";
+            }
+
+        }
+        function edit() {
+            for (var li of document.querySelectorAll('li')){
+                if (document.getElementById('qb').innerText === li.innerText){
+                    var ul = document.getElementById(li.parentNode.id);
+                    ul.children[1].innerHTML = document.getElementById('pname').value;
+                    ul.children[2].innerHTML = document.getElementById('pprice').value;
+                    ul.children[3].innerHTML =  document.getElementById('pquantity').value;
+                    modifier.style.display = "none";
+                }
+            }
+        }
+        var del = document.getElementsByClassName('del');
+        var x;
+        for(i = 0; i < del.length; i++){
+            del[i].onclick = function () {
+                if(confirm('Are You Want To Delete?')){
+                    let name = this.parentNode.parentNode.children[1].innerHTML;
+                    this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+                    alert('You have succesfully deleted ' + name);
+                }
+            }
+
+        }
+
+        var span = document.getElementById('exit');
+        span.onclick = function () {
+            modifier.style.display = 'none';
+        };
+        var add = document.getElementById('add');
+        var btn = document.getElementById('add-btn');
+        btn.onclick = function () {
+            add.style.display = 'block';
+        };
+        var span1 = document.getElementById('close');
+        span1.onclick = function () {
+            add.style.display = 'none';
+        };
+
+
+
+    </script>
+
+</body>
+</html>
